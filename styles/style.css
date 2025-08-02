@@ -142,6 +142,20 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Prevent horizontal overflow from toast */
+body {
+    overflow-x: hidden;
+}
+
+/* Sticky Navigation */
+.navbar-visible {
+    transform: translateY(0) !important;
+}
+
+.navbar-hidden {
+    transform: translateY(-100%) !important;
+}
+
 /* Button Enhancements */
 .cta-btn, .learn-more-btn {
     position: relative;

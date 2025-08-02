@@ -306,29 +306,20 @@ function initParallaxEffect() {
     });
 }
 
-// Enhanced Header Behavior
-function initEnhancedHeader() {
-    const header = document.querySelector('header');
-    let lastScrollTop = 0;
+// Sticky Navigation Behavior
+function initStickyNavigation() {
+    const navbar = document.getElementById('navbar');
     
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > 100) {
-            header.classList.add('shadow-lg');
-            
-            // Hide header on scroll down, show on scroll up
-            if (scrollTop > lastScrollTop && scrollTop > 200) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
+            navbar.classList.remove('-translate-y-full');
+            navbar.classList.add('shadow-lg');
         } else {
-            header.classList.remove('shadow-lg');
-            header.style.transform = 'translateY(0)';
+            navbar.classList.add('-translate-y-full');
+            navbar.classList.remove('shadow-lg');
         }
-        
-        lastScrollTop = scrollTop;
     });
 }
 
@@ -360,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNewsletterForm();
     initStatsAnimation();
     initParallaxEffect();
-    initEnhancedHeader();
+    initStickyNavigation();
     initServiceCards();
     
     // Add loading animation
