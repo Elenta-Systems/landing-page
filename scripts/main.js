@@ -81,7 +81,9 @@ function initSmoothScrolling() {
                 });
                 // Close mobile menu if open
                 const mobileMenu = document.getElementById('mobile-menu');
-                mobileMenu.classList.add('hidden');
+                if (mobileMenu) {
+                    mobileMenu.classList.add('hidden');
+                }
             }
         });
     });
@@ -101,7 +103,10 @@ function initHeaderScrollEffect() {
 
 // Contact Form Submission
 function initContactForm() {
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return; // Exit if contact form doesn't exist on this page
+    
+    contactForm.addEventListener('submit', function(e) {
         // Get form data for validation
         const formData = new FormData(this);
         const name = formData.get('name');
@@ -142,6 +147,8 @@ function initContactForm() {
 
 function showSuccessToast() {
     const toast = document.getElementById('success-toast');
+    if (!toast) return; // Exit if success toast doesn't exist on this page
+    
     const toastMessage = toast.querySelector('.toast-message');
     
     // Update toast message based on current language
@@ -163,10 +170,16 @@ function initCtaButton() {
     const ctaBtns = document.querySelectorAll('.cta-btn');
     ctaBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelector('#contact').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            const contactSection = document.querySelector('#contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else {
+                // If contact section doesn't exist on this page, redirect to index.html#contact
+                window.location.href = 'index.html#contact';
+            }
         });
     });
     
@@ -174,10 +187,16 @@ function initCtaButton() {
     const learnMoreBtn = document.querySelector('.learn-more-btn');
     if (learnMoreBtn) {
         learnMoreBtn.addEventListener('click', () => {
-            document.querySelector('#services').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            const servicesSection = document.querySelector('#services');
+            if (servicesSection) {
+                servicesSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else {
+                // If services section doesn't exist on this page, redirect to index.html#services
+                window.location.href = 'index.html#services';
+            }
         });
     }
 }
@@ -309,6 +328,7 @@ function initParallaxEffect() {
 // Sticky Navigation Behavior
 function initStickyNavigation() {
     const navbar = document.getElementById('navbar');
+    if (!navbar) return; // Exit if navbar doesn't exist on this page
     
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -339,6 +359,56 @@ function initServiceCards() {
     });
 }
 
+// Image Modal Functionality
+function initImageModal() {
+    // Create modal elements
+    const modal = document.createElement('div');
+    modal.id = 'image-modal';
+    modal.className = 'fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4';
+    modal.innerHTML = `
+        <div class="relative max-w-4xl max-h-full">
+            <img id="modal-image" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
+            <button id="close-modal" class="absolute top-4 right-4 text-white hover:text-gray-300 text-2xl font-bold bg-black/50 rounded-full w-10 h-10 flex items-center justify-center">
+                ×
+            </button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Add click handlers to all images in project sections
+    const projectImages = document.querySelectorAll('.project-detail img');
+    projectImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+            const modalImg = document.getElementById('modal-image');
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal functionality
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    };
+
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+}
+
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initLanguageToggle();
@@ -353,6 +423,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initParallaxEffect();
     initStickyNavigation();
     initServiceCards();
+    initImageModal(); // Add the new image modal functionality
     
     // Add loading animation
     document.body.classList.add('loaded');

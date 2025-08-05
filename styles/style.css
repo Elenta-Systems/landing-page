@@ -269,3 +269,63 @@ header.shadow-lg {
         color: #d1d5db;
     }
 }
+
+/* Image Modal Styles */
+#image-modal {
+    transition: opacity 0.3s ease;
+}
+
+#image-modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#image-modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#modal-image {
+    transition: transform 0.3s ease;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+#close-modal {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+#close-modal:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Enhanced image hover effects for project images */
+.project-detail img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-detail img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading state for modal */
+#image-modal.loading #modal-image {
+    opacity: 0.7;
+}
+
+/* Responsive modal adjustments */
+@media (max-width: 768px) {
+    #image-modal {
+        padding: 1rem;
+    }
+    
+    #close-modal {
+        top: 1rem;
+        right: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+}
