@@ -1,0 +1,1553 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Elenta Systems | إلينتا | Leading Digital Solutions Provider in MENA"
+  description="Elenta Systems (إلينتا) delivers digital transformation, AI, and enterprise software solutions tailored for organisations across the MENA region."
+  lang="en"
+>
+    <!-- Header -->
+    <header
+      id="navbar"
+      class="fixed top-0 z-50 w-full border-b border-transparent bg-white/90 backdrop-blur-md transition-all duration-300"
+    >
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <img src="/assets/logo/Logo.png" alt="Elenta Systems" class="h-14 w-auto">
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex md:items-center">
+                    <div class="flex items-center gap-1.5 rtl:space-x-reverse">
+                        <a href="#home" class="nav-link">
+                            <span class="nav-link-label" data-en="Home" data-ar="الرئيسية">Home</span>
+                        </a>
+                        <a href="#services" class="nav-link">
+                            <span class="nav-link-label" data-en="Services" data-ar="الخدمات">Services</span>
+                        </a>
+                        <a href="/works" class="nav-link">
+                            <span class="nav-link-label" data-en="Our Work" data-ar="أعمالنا">Our Work</span>
+                        </a>
+                        <a href="#about" class="nav-link">
+                            <span class="nav-link-label" data-en="About" data-ar="عن الشركة">About</span>
+                        </a>
+                        <a href="#contact" class="nav-link">
+                            <span class="nav-link-label" data-en="Contact" data-ar="اتصل بنا">Contact</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Language Toggle & Mobile Menu Button -->
+                <div class="flex items-center gap-3 rtl:space-x-reverse">
+                    <!-- Language Toggle -->
+                    <div class="lang-toggle" role="radiogroup" aria-label="Language toggle">
+                        <button
+                          type="button"
+                          id="lang-en"
+                          class="lang-btn is-active"
+                          data-lang="en"
+                          aria-pressed="true"
+                        >
+                          EN
+                        </button>
+                        <button
+                          type="button"
+                          id="lang-ar"
+                          class="lang-btn"
+                          data-lang="ar"
+                          aria-pressed="false"
+                        >
+                          AR
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button
+                          id="mobile-menu-btn"
+                          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary"
+                          type="button"
+                          aria-expanded="false"
+                          aria-controls="mobile-menu"
+                          aria-label="Toggle navigation"
+                        >
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden border-t border-gray-100 bg-white pt-2 pb-3 shadow-sm md:hidden">
+                <div class="space-y-1 px-4">
+                    <a href="#home" class="nav-link">
+                        <span class="nav-link-label" data-en="Home" data-ar="الرئيسية">Home</span>
+                    </a>
+                    <a href="#services" class="nav-link">
+                        <span class="nav-link-label" data-en="Services" data-ar="الخدمات">Services</span>
+                    </a>
+                    <a href="/works" class="nav-link">
+                        <span class="nav-link-label" data-en="Our Work" data-ar="أعمالنا">Our Work</span>
+                    </a>
+                    <a href="#about" class="nav-link">
+                        <span class="nav-link-label" data-en="About" data-ar="عن الشركة">About</span>
+                    </a>
+                    <a href="#contact" class="nav-link">
+                        <span class="nav-link-label" data-en="Contact" data-ar="اتصل بنا">Contact</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <!-- Hero Section -->
+            <section id="home" class="relative text-light min-h-screen flex items-center pt-16 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="/assets/images/hero.avif" 
+                 alt="Digital Technology Background" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-primary/90"></div>
+        </div>
+        <div class="absolute inset-0 opacity-10 z-1">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="hero-content text-center fade-in">
+
+                <h1 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight" 
+                    data-en="Driven by Ideas. Designed for People." 
+                    data-ar="مدفوع بالابتكار. مصمم للناس.">
+                    Driven by Ideas. Designed for People.
+                </h1>
+                <p class="hero-subtitle text-xl sm:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto leading-relaxed" 
+                   data-en="Transforming businesses through innovative digital solutions, intelligent automation, and cutting-edge technology designed for the modern world" 
+                   data-ar="نحول الأعمال من خلال الحلول الرقمية المبتكرة والأتمتة الذكية والتكنولوجيا المتطورة المصممة للعالم الحديث">
+                    Transforming businesses through innovative digital solutions, intelligent automation, and cutting-edge technology designed for the modern world
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <button class="cta-btn bg-secondary hover:bg-blue-500 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl group" 
+                            data-en="Start Your Project" 
+                            data-ar="ابدأ مشروعك">
+                        <span data-en="Start Your Project" data-ar="ابدأ مشروعك">Start Your Project</span>
+                        <svg class="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </button>
+                    <button class="learn-more-btn border-2 border-white/30 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 hover:bg-white/10 hover:border-white/50 backdrop-blur-sm" 
+                            data-en="Learn More" 
+                            data-ar="اعرف المزيد">
+                        Learn More
+                    </button>
+                </div>
+                <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-secondary mb-1">50+</div>
+                        <div class="text-sm text-gray-300" data-en="Projects Delivered" data-ar="مشروع منجز">Projects Delivered</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-secondary mb-1">99%</div>
+                        <div class="text-sm text-gray-300" data-en="Client Satisfaction" data-ar="رضا العملاء">Client Satisfaction</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-secondary mb-1">24/7</div>
+                        <div class="text-sm text-gray-300" data-en="Support" data-ar="الدعم">Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </section>
+
+            <!-- Company Overview Section -->
+            <section id="about-overview" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6 about-badge">
+                        <span class="text-sm font-semibold" data-en="About Elenta Systems" data-ar="عن شركة إلنتا">About Elenta Systems</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-6 leading-tight about-heading" 
+                        data-en="Empowering Digital Transformation Across MENA" 
+                        data-ar="تمكين التحول الرقمي عبر منطقة الشرق الأوسط وشمال أفريقيا">
+                        Empowering Digital Transformation Across MENA
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed about-paragraph" 
+                       data-en="Since our founding, Elenta Systems has been at the forefront of digital innovation in Egypt and the broader MENA region. We specialize in creating scalable, efficient, and culturally-aware software solutions that drive business growth and operational excellence." 
+                       data-ar="منذ تأسيسنا، تقود شركة إلنتا سيستمز مقدمة الابتكار الرقمي في مصر ومنطقة الشرق الأوسط وشمال أفريقيا الأوسع. نحن متخصصون في إنشاء حلول برمجية قابلة للتوسع وفعالة وواعية ثقافياً تحفز نمو الأعمال والتميز التشغيلي.">
+                        Since our founding, Elenta Systems has been at the forefront of digital innovation in Egypt and the broader MENA region. We specialize in creating scalable, efficient, and culturally-aware software solutions that drive business growth and operational excellence.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 about-stats">
+                        <div class="text-center p-4 bg-gray-50 rounded-lg about-stat-card">
+                            <div class="text-2xl font-bold text-secondary mb-1 about-stat-number" data-count="5" data-suffix="+">5+</div>
+                            <div class="text-sm text-gray-600" data-en="Years Experience" data-ar="سنوات الخبرة">Years Experience</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-lg about-stat-card">
+                            <div class="text-2xl font-bold text-secondary mb-1 about-stat-number" data-count="3">3</div>
+                            <div class="text-sm text-gray-600" data-en="Countries Served" data-ar="دول مخدومة">Countries Served</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative about-media">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl about-media-card">
+                        <img src="/assets/images/about.avif" 
+                             alt="Digital Transformation Team" 
+                             class="w-full h-80 object-cover about-media-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent about-media-gradient"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8 about-media-overlay">
+                            <div class="flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <div class="w-16 h-16 bg-secondary/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-white/20 about-media-icon-wrap">
+                                        <svg class="w-8 h-8 text-secondary about-media-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-xl font-semibold mb-2 about-overlay-title" data-en="Innovation-Driven" data-ar="مدفوع بالابتكار">Innovation-Driven</h3>
+                                    <p class="text-gray-200 about-overlay-text" data-en="Cutting-edge solutions for modern challenges" data-ar="حلول متطورة للتحديات الحديثة">Cutting-edge solutions for modern challenges</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Foundation Experience Section -->
+    <section id="foundation" class="foundation-section">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="foundation-intro text-center">
+
+                <h2 class="foundation-intro-title" 
+                    data-en="Principles that power our partnerships" 
+                    data-ar="المبادئ التي تعزز شراكاتنا">
+                    Principles that power our partnerships
+                </h2>
+                <p class="foundation-intro-copy" 
+                   data-en="The principles that guide our work and define our commitment to excellence" 
+                   data-ar="المبادئ التي توجه عملنا وتحدد التزامنا بالتميز">
+                    The principles that guide our work and define our commitment to excellence
+                </p>
+            </div>
+        </div>
+
+        <div class="foundation-scroll">
+            <div class="foundation-progress">
+                <div class="foundation-progress-dot is-active">
+                    <span class="foundation-progress-number">01</span>
+                    <span class="foundation-progress-label" data-en="Mission" data-ar="مهمتنا">Mission</span>
+                </div>
+                <div class="foundation-progress-dot">
+                    <span class="foundation-progress-number">02</span>
+                    <span class="foundation-progress-label" data-en="Vision" data-ar="رؤيتنا">Vision</span>
+                </div>
+                <div class="foundation-progress-dot">
+                    <span class="foundation-progress-number">03</span>
+                    <span class="foundation-progress-label" data-en="Values" data-ar="قيمنا">Values</span>
+                </div>
+            </div>
+
+            <div class="foundation-pin">
+                <div class="foundation-stage">
+                    <article class="foundation-slide is-active">
+                        <div class="foundation-slide-media">
+                            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1400&q=80" 
+                                 alt="Product team collaborating during a strategy session" 
+                                 loading="lazy">
+                        </div>
+                        <div class="foundation-slide-content">
+                            <span class="foundation-slide-label" data-en="Our Mission" data-ar="مهمتنا">Our Mission</span>
+                            <h3 class="foundation-slide-title" 
+                                data-en="Empowering digital transformation across MENA" 
+                                data-ar="تمكين التحول الرقمي عبر منطقة الشرق الأوسط وشمال أفريقيا">
+                                Empowering digital transformation across MENA
+                            </h3>
+                            <p class="foundation-slide-description" 
+                               data-en="To empower businesses across MENA with innovative digital solutions that drive growth, efficiency, and competitive advantage in the digital age." 
+                               data-ar="تمكين الشركات عبر منطقة الشرق الأوسط وشمال أفريقيا بحلول رقمية مبتكرة تحفز النمو والكفاءة والميزة التنافسية في العصر الرقمي.">
+                                To empower businesses across MENA with innovative digital solutions that drive growth, efficiency, and competitive advantage in the digital age.
+                            </p>
+                        </div>
+                        <span class="foundation-slide-index">01</span>
+                    </article>
+
+                    <article class="foundation-slide">
+                        <div class="foundation-slide-media">
+                            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1400&q=80" 
+                                 alt="City skyline representing forward-looking vision" 
+                                 loading="lazy">
+                        </div>
+                        <div class="foundation-slide-content">
+                            <span class="foundation-slide-label" data-en="Our Vision" data-ar="رؤيتنا">Our Vision</span>
+                            <h3 class="foundation-slide-title" 
+                                data-en="Leading the region with human-centered innovation" 
+                                data-ar="ريادة المنطقة بابتكار محوره الإنسان">
+                                Leading the region with human-centered innovation
+                            </h3>
+                            <p class="foundation-slide-description" 
+                               data-en="To be the leading digital transformation partner in the MENA region, recognized for our innovation, cultural sensitivity, and exceptional results." 
+                               data-ar="أن نكون الشريك الرائد للتحول الرقمي في منطقة الشرق الأوسط وشمال أفريقيا، معترف بنا لابتكارنا وحساسيتنا الثقافية ونتائجنا الاستثنائية.">
+                                To be the leading digital transformation partner in the MENA region, recognized for our innovation, cultural sensitivity, and exceptional results.
+                            </p>
+                        </div>
+                        <span class="foundation-slide-index">02</span>
+                    </article>
+
+                    <article class="foundation-slide">
+                        <div class="foundation-slide-media">
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80" 
+                                 alt="Team celebrating shared values and success" 
+                                 loading="lazy">
+                        </div>
+                        <div class="foundation-slide-content">
+                            <span class="foundation-slide-label" data-en="Our Values" data-ar="قيمنا">Our Values</span>
+                            <h3 class="foundation-slide-title" 
+                                data-en="Relationships built on trust, integrity, and excellence" 
+                                data-ar="علاقات قائمة على الثقة والنزاهة والتميز">
+                                Relationships built on trust, integrity, and excellence
+                            </h3>
+                            <p class="foundation-slide-description" 
+                               data-en="Innovation, Integrity, Excellence, and Client-centricity. We believe in building lasting relationships through trust, transparency, and delivering value beyond expectations." 
+                               data-ar="الابتكار والنزاهة والتميز والتركيز على العميل. نؤمن ببناء علاقات دائمة من خلال الثقة والشفافية وتقديم قيمة تفوق التوقعات.">
+                                Innovation, Integrity, Excellence, and Client-centricity. We believe in building lasting relationships through trust, transparency, and delivering value beyond expectations.
+                            </p>
+                        </div>
+                        <span class="foundation-slide-index">03</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                    <span class="text-sm font-semibold" data-en="What We Do" data-ar="ما نقوم به">What We Do</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-primary mb-4" 
+                    data-en="Comprehensive Digital Solutions" 
+                    data-ar="حلول رقمية شاملة">
+                    Comprehensive Digital Solutions
+                </h2>
+                <p class="section-subtitle text-lg text-gray-600 max-w-3xl mx-auto" 
+                   data-en="From ideation to implementation, we deliver end-to-end digital solutions that transform businesses and drive sustainable growth across diverse industries" 
+                   data-ar="من الفكرة إلى التنفيذ، نقدم حلولاً رقمية شاملة تحول الأعمال وتحفز النمو المستدام عبر صناعات متنوعة">
+                    From ideation to implementation, we deliver end-to-end digital solutions that transform businesses and drive sustainable growth across diverse industries
+                </p>
+            </div>
+            
+            <div class="services-showcase mb-16">
+                <div class="services-visual">
+                    <div class="services-visual-image services-visual-image--current"></div>
+                    <div class="services-visual-image services-visual-image--next"></div>
+                    <div class="services-visual-overlay"></div>
+                    <div class="services-detail">
+                        <div class="services-detail-meta">
+                            <span class="services-detail-index">01</span>
+                            <span class="services-detail-label"></span>
+                        </div>
+                        <h3 class="services-detail-title"></h3>
+                        <p class="services-detail-description"></p>
+                        <div class="services-detail-tags"></div>
+                    </div>
+                </div>
+                <div class="services-stack">
+                    <div class="services-preview">
+                        <div class="services-preview-card">
+                            <div class="services-preview-glow"></div>
+                            <div class="services-preview-body">
+                                <div class="services-preview-icon"></div>
+                                <div class="services-preview-meta">
+                                    <span class="services-preview-badge">Next</span>
+                                    <span class="services-preview-index">02</span>
+                                </div>
+                                <h4 class="services-preview-title"></h4>
+                                <div class="services-preview-arrow">
+                                    <span class="services-preview-cta" data-en="Scroll to explore" data-ar="مرر للاستكشاف">Scroll to explore</span>
+                                    <svg class="services-preview-arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services-stack-track">
+                        <!-- Enterprise Solutions -->
+                        <div class="service-card bg-white p-8 rounded-xl shadow-lg hover-lift border-t-4 border-secondary"
+                             data-bg="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"
+                             data-accent="#2563eb">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-3" 
+                                data-en="Enterprise Solutions" 
+                                data-ar="حلول المؤسسات">
+                                Enterprise Solutions
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-4" 
+                               data-en="Scalable ERP systems, CRM platforms, and business intelligence solutions that streamline operations and boost productivity across your organization." 
+                               data-ar="أنظمة تخطيط الموارد المؤسسية قابلة للتوسع ومنصات إدارة علاقات العملاء وحلول ذكاء الأعمال التي تبسط العمليات وتعزز الإنتاجية.">
+                                Scalable ERP systems, CRM platforms, and business intelligence solutions that streamline operations and boost productivity across your organization.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">ERP</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">CRM</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">BI</span>
+                            </div>
+                        </div>
+                        
+                        <!-- AI & Automation -->
+                        <div class="service-card bg-white p-8 rounded-xl shadow-lg hover-lift border-t-4 border-secondary"
+                             data-bg="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=1600&q=80&sat=160"
+                             data-accent="#f97316">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-3" 
+                                data-en="AI & Automation" 
+                                data-ar="الذكاء الاصطناعي والأتمتة">
+                                AI & Automation
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-4" 
+                               data-en="Advanced AI solutions featuring Large Language Models (LLM), Retrieval-Augmented Generation (RAG), intelligent agents, and custom chatbots for enhanced business automation and customer engagement." 
+                               data-ar="حلول الذكاء الاصطناعي المتقدمة التي تتميز بنماذج اللغة الكبيرة (LLM) والتوليد المعزز بالاسترجاع (RAG) والوكلاء الذكيين وروبوتات الدردشة المخصصة لتعزيز أتمتة الأعمال وإشراك العملاء.">
+                                Advanced AI solutions featuring Large Language Models (LLM), Retrieval-Augmented Generation (RAG), intelligent agents, and custom chatbots for enhanced business automation and customer engagement.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">LLM</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">RAG</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">AI Agents</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Chatbots</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Web & Mobile Development -->
+                        <div class="service-card bg-white p-8 rounded-xl shadow-lg hover-lift border-t-4 border-secondary"
+                             data-bg="https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?auto=format&fit=crop&w=1600&q=80&sat=160"
+                             data-accent="#14b8a6">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-3" 
+                                data-en="Web & Mobile Development" 
+                                data-ar="تطوير الويب والجوال">
+                                Web & Mobile Development
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-4" 
+                               data-en="Full-stack development of responsive web applications and native mobile apps using cutting-edge frameworks and technologies." 
+                               data-ar="تطوير شامل لتطبيقات الويب التفاعلية وتطبيقات الهاتف المحمول الأصلية باستخدام أحدث الأطر والتقنيات.">
+                                Full-stack development of responsive web applications and native mobile apps using cutting-edge frameworks and technologies.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">.NET</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Angular</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">ASP.NET Core</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Cloud Solutions -->
+                        <div class="service-card bg-white p-8 rounded-xl shadow-lg hover-lift border-t-4 border-secondary"
+                             data-bg="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80&sat=160"
+                             data-accent="#0ea5e9">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-3" 
+                                data-en="Cloud Solutions" 
+                                data-ar="حلول سحابية">
+                                Cloud Solutions
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-4" 
+                               data-en="Secure cloud migration, infrastructure management, and scalable cloud-native applications that grow with your business needs." 
+                               data-ar="هجرة سحابية آمنة وإدارة البنية التحتية وتطبيقات سحابية أصلية قابلة للتوسع تنمو مع احتياجات عملك.">
+                                Secure cloud migration, infrastructure management, and scalable cloud-native applications that grow with your business needs.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">AWS</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Azure</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">DevOps</span>
+                            </div>
+                        </div>
+                        
+                        <!-- UX/UI Design -->
+                        <div class="service-card bg-white p-8 rounded-xl shadow-lg hover-lift border-t-4 border-secondary"
+                             data-bg="https://images.unsplash.com/photo-1602576666092-bf6447a729fc?auto=format&fit=crop&w=1600&q=80&sat=200"
+                             data-accent="#a855f7">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 3v18h-6a4 4 0 01-4-4V7a4 4 0 014-4h6z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-3" 
+                                data-en="UX/UI Design" 
+                                data-ar="تصميم تجربة المستخدم">
+                                UX/UI Design
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-4" 
+                               data-en="User-centered design methodology creating intuitive interfaces that deliver exceptional user experiences and drive engagement." 
+                               data-ar="منهجية تصميم محورها المستخدم لإنشاء واجهات بديهية تقدم تجارب مستخدم استثنائية وتزيد التفاعل.">
+                                User-centered design methodology creating intuitive interfaces that deliver exceptional user experiences and drive engagement.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Figma</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Prototyping</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Research</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Digital Transformation -->
+                        <div class="service-card bg-white p-8 rounded-xl shadow-lg hover-lift border-t-4 border-secondary"
+                             data-bg="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80&sat=160"
+                             data-accent="#f43f5e">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-3" 
+                                data-en="Digital Transformation" 
+                                data-ar="التحول الرقمي">
+                                Digital Transformation
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-4" 
+                               data-en="Strategic consulting and implementation services to modernize your business processes and technology infrastructure for competitive advantage." 
+                               data-ar="خدمات استشارية وتنفيذية استراتيجية لتحديث عمليات عملك والبنية التحتية التكنولوجية للحصول على ميزة تنافسية.">
+                                Strategic consulting and implementation services to modernize your business processes and technology infrastructure for competitive advantage.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Strategy</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Integration</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Consulting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+     <!-- Portfolio Preview Section - Full Screen Showcase -->
+     <section id="portfolio-showcase">
+        <!-- Section Header -->
+        <div class="portfolio-header">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                    <span class="text-sm font-semibold" data-en="Our Portfolio" data-ar="أعمالنا">Our Portfolio</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4" 
+                    data-en="Recent Projects & Success Stories" 
+                    data-ar="المشاريع الأخيرة وقصص النجاح">
+                    Recent Projects & Success Stories
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" 
+                   data-en="Discover how we've helped businesses across various industries achieve their digital transformation goals with innovative solutions" 
+                   data-ar="اكتشف كيف ساعدنا الشركات عبر مختلف الصناعات في تحقيق أهداف التحول الرقمي بحلول مبتكرة">
+                    Discover how we've helped businesses across various industries achieve their digital transformation goals with innovative solutions
+                </p>
+            </div>
+        </div>
+
+        <!-- Full Screen Projects Container -->
+        <div id="portfolio-pin-container" class="portfolio-pin-container">
+            <div class="portfolio-slides-wrapper">
+                
+                <!-- Vortex Robotics Project - Slide from Right -->
+                <div class="portfolio-slide" 
+                     data-direction="right" 
+                     data-bg="assets/images/vortex/section_1.png"
+                     data-color="#36B1E1">
+                    <div class="portfolio-slide-bg"></div>
+                    <div class="portfolio-slide-overlay"></div>
+                    <div class="portfolio-slide-content">
+                        <div class="portfolio-slide-badge">
+                            <span class="px-4 py-2 bg-secondary/90 text-white text-sm rounded-full font-semibold">
+                                Web Development
+                            </span>
+                        </div>
+                        <h3 class="portfolio-slide-title" data-en="Vortex Robotics" data-ar="فورتكس روبوتيكس">
+                            Vortex Robotics
+                        </h3>
+                        <p class="portfolio-slide-description" 
+                           data-en="Advanced robotics company website with cutting-edge design and seamless user experience for showcasing innovative robotic solutions." 
+                           data-ar="موقع شركة الروبوتات المتقدمة بتصميم متطور وتجربة مستخدم سلسة لعرض الحلول الروبوتية المبتكرة.">
+                            Advanced robotics company website with cutting-edge design and seamless user experience for showcasing innovative robotic solutions.
+                        </p>
+                        <div class="portfolio-slide-tags">
+                            <span class="portfolio-tag">React</span>
+                            <span class="portfolio-tag">Node.js</span>
+                            <span class="portfolio-tag">Responsive</span>
+                        </div>
+                        <a href="/works#vortex" class="portfolio-slide-link">
+                            <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- VeloOne Consulting Project - Slide from Left -->
+                <div class="portfolio-slide" 
+                     data-direction="left" 
+                     data-bg="assets/images/veloone/section_1.png"
+                     data-color="#2563EB">
+                    <div class="portfolio-slide-bg"></div>
+                    <div class="portfolio-slide-overlay"></div>
+                    <div class="portfolio-slide-content">
+                        <div class="portfolio-slide-badge">
+                            <span class="px-4 py-2 bg-blue-500/90 text-white text-sm rounded-full font-semibold">
+                                Consulting Platform
+                            </span>
+                        </div>
+                        <h3 class="portfolio-slide-title" data-en="VeloOne Consulting" data-ar="فيلوون للاستشارات">
+                            VeloOne Consulting
+                        </h3>
+                        <p class="portfolio-slide-description" 
+                           data-en="Professional consulting platform designed to connect businesses with expert consultants and streamline the consultation process." 
+                           data-ar="منصة استشارية مهنية مصممة لربط الشركات بالخبراء الاستشاريين وتبسيط عملية الاستشارة.">
+                            Professional consulting platform designed to connect businesses with expert consultants and streamline the consultation process.
+                        </p>
+                        <div class="portfolio-slide-tags">
+                            <span class="portfolio-tag">Angular</span>
+                            <span class="portfolio-tag">.NET Core</span>
+                            <span class="portfolio-tag">SQL Server</span>
+                        </div>
+                        <a href="/works#veloone" class="portfolio-slide-link">
+                            <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- HeartBeats Medical AI Project - Slide from Top -->
+                <div class="portfolio-slide" 
+                     data-direction="top" 
+                     data-bg="assets/images/heartbeats/section_1.png"
+                     data-color="#EF4444">
+                    <div class="portfolio-slide-bg"></div>
+                    <div class="portfolio-slide-overlay"></div>
+                    <div class="portfolio-slide-content">
+                        <div class="portfolio-slide-badge">
+                            <span class="px-4 py-2 bg-red-500/90 text-white text-sm rounded-full font-semibold">
+                                AI & Healthcare
+                            </span>
+                        </div>
+                        <h3 class="portfolio-slide-title" data-en="HeartBeats Medical AI" data-ar="هارت بيتس الطبي بالذكاء الاصطناعي">
+                            HeartBeats Medical AI
+                        </h3>
+                        <p class="portfolio-slide-description" 
+                           data-en="AI-powered medical platform for diabetic detection and patient management with comprehensive admin dashboard and doctor portal." 
+                           data-ar="منصة طبية مدعومة بالذكاء الاصطناعي لاكتشاف السكري وإدارة المرضى مع لوحة تحكم شاملة للإدارة وبوابة للأطباء.">
+                            AI-powered medical platform for diabetic detection and patient management with comprehensive admin dashboard and doctor portal.
+                        </p>
+                        <div class="portfolio-slide-tags">
+                            <span class="portfolio-tag">AI/ML</span>
+                            <span class="portfolio-tag">Python</span>
+                            <span class="portfolio-tag">Healthcare</span>
+                        </div>
+                        <a href="/works#heartbeats" class="portfolio-slide-link">
+                            <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- View All Projects Button Section -->
+        <div class="portfolio-cta-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <a href="/works" 
+                   id="view-all-projects-btn"
+                   class="inline-flex items-center bg-secondary hover:bg-blue-500 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl group relative overflow-hidden">
+                    <span class="relative z-10" data-en="View All Projects" data-ar="عرض جميع المشاريع">View All Projects</span>
+                    <svg class="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform duration-300 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries We Serve Section -->
+    <section id="industries" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-black mb-6">
+                    <span class="text-sm font-semibold" data-en="Industries" data-ar="الصناعات">Industries</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4" 
+                    data-en="Transforming Businesses Across Industries" 
+                    data-ar="تحويل الأعمال عبر الصناعات">
+                    Transforming Businesses Across Industries
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" 
+                   data-en="Our expertise spans multiple sectors, delivering tailored solutions that address unique industry challenges and opportunities" 
+                   data-ar="خبرتنا تمتد عبر قطاعات متعددة، نقدم حلولاً مخصصة تعالج التحديات والفرص الفريدة للصناعة">
+                    Our expertise spans multiple sectors, delivering tailored solutions that address unique industry challenges and opportunities
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Healthcare -->
+                <div class="industry-card bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3" data-en="Healthcare" data-ar="الرعاية الصحية">Healthcare</h3>
+                    <p class="text-gray-600" data-en="Digital health solutions and patient management systems" data-ar="حلول الصحة الرقمية وأنظمة إدارة المرضى">Digital health solutions and patient management systems</p>
+                </div>
+                
+                <!-- Finance -->
+                <div class="industry-card bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3" data-en="Finance & Banking" data-ar="المالية والمصرفية">Finance & Banking</h3>
+                    <p class="text-gray-600" data-en="Secure fintech solutions and banking systems" data-ar="حلول التكنولوجيا المالية الآمنة والأنظمة المصرفية">Secure fintech solutions and banking systems</p>
+                </div>
+                
+                <!-- E-commerce -->
+                <div class="industry-card bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3" data-en="E-commerce & Retail" data-ar="التجارة الإلكترونية والتجزئة">E-commerce & Retail</h3>
+                    <p class="text-gray-600" data-en="Online marketplaces and retail management platforms" data-ar="الأسواق الإلكترونية ومنصات إدارة التجزئة">Online marketplaces and retail management platforms</p>
+                </div>
+                
+                <!-- Education -->
+                <div class="industry-card bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3" data-en="Education" data-ar="التعليم">Education</h3>
+                    <p class="text-gray-600" data-en="E-learning platforms and educational management systems" data-ar="منصات التعلم الإلكتروني وأنظمة الإدارة التعليمية">E-learning platforms and educational management systems</p>
+                </div>
+                
+                <!-- Manufacturing -->
+                <div class="industry-card bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3" data-en="Manufacturing" data-ar="التصنيع">Manufacturing</h3>
+                    <p class="text-gray-600" data-en="Industrial automation and production management" data-ar="الأتمتة الصناعية وإدارة الإنتاج">Industrial automation and production management</p>
+                </div>
+                
+                <!-- Real Estate -->
+                <div class="industry-card bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3" data-en="Real Estate" data-ar="العقارات">Real Estate</h3>
+                    <p class="text-gray-600" data-en="Property management and real estate platforms" data-ar="إدارة الممتلكات ومنصات العقارات">Property management and real estate platforms</p>
+                </div>
+                
+                <!-- Logistics -->
+                <div class="industry-card bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3" data-en="Logistics & Supply Chain" data-ar="اللوجستيات وسلسلة التوريد">Logistics & Supply Chain</h3>
+                    <p class="text-gray-600" data-en="Supply chain optimization and tracking systems" data-ar="تحسين سلسلة التوريد وأنظمة التتبع">Supply chain optimization and tracking systems</p>
+                </div>
+                
+                <!-- Government -->
+                <div class="industry-card bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3" data-en="Government & Public Sector" data-ar="الحكومة والقطاع العام">Government & Public Sector</h3>
+                    <p class="text-gray-600" data-en="Digital government services and citizen platforms" data-ar="خدمات الحكومة الرقمية ومنصات المواطنين">Digital government services and citizen platforms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Process Section -->
+    <section id="process" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="process-badge inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                    <span class="text-sm font-semibold" data-en="Our Process" data-ar="عمليتنا">Our Process</span>
+                </div>
+                <h2 class="process-heading text-3xl sm:text-4xl font-bold text-primary mb-4" 
+                    data-en="How We Bring Your Vision to Life" 
+                    data-ar="كيف نحقق رؤيتك إلى واقع">
+                    How We Bring Your Vision to Life
+                </h2>
+                <p class="process-copy text-lg text-gray-600 max-w-3xl mx-auto" 
+                   data-en="Our proven methodology ensures successful project delivery from concept to deployment and beyond" 
+                   data-ar="منهجيتنا المثبتة تضمن التسليم الناجح للمشروع من المفهوم إلى النشر وما بعده">
+                    Our proven methodology ensures successful project delivery from concept to deployment and beyond
+                </p>
+            </div>
+            
+            <div class="process-timeline-wrapper">
+                <svg class="process-path hidden lg:block" viewBox="0 0 1000 320" preserveAspectRatio="none">
+                    <path id="process-motion-path" d="M60 240 C280 80, 720 80, 940 240"></path>
+                </svg>
+                <div id="process-marker" class="process-marker hidden lg:flex"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                    <!-- Discovery -->
+                    <div class="process-card text-center">
+                        <div class="process-step-icon relative mb-8">
+                            <div class="process-step-badge w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <span class="text-2xl font-bold text-white">1</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary mb-4" data-en="Discovery & Planning" data-ar="الاستكشاف والتخطيط">Discovery & Planning</h3>
+                        <p class="text-gray-600" data-en="Understanding your business needs and defining project scope" data-ar="فهم احتياجات عملك وتحديد نطاق المشروع">Understanding your business needs and defining project scope</p>
+                    </div>
+                    
+                    <!-- Design -->
+                    <div class="process-card text-center">
+                        <div class="process-step-icon relative mb-8">
+                            <div class="process-step-badge w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <span class="text-2xl font-bold text-white">2</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary mb-4" data-en="Design & Prototyping" data-ar="التصميم والنموذج الأولي">Design & Prototyping</h3>
+                        <p class="text-gray-600" data-en="Creating intuitive designs and interactive prototypes" data-ar="إنشاء تصاميم بديهية ونماذج أولية تفاعلية">Creating intuitive designs and interactive prototypes</p>
+                    </div>
+                    
+                    <!-- Development -->
+                    <div class="process-card text-center">
+                        <div class="process-step-icon relative mb-8">
+                            <div class="process-step-badge w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <span class="text-2xl font-bold text-white">3</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary mb-4" data-en="Development & Testing" data-ar="التطوير والاختبار">Development & Testing</h3>
+                        <p class="text-gray-600" data-en="Building robust solutions with rigorous quality assurance" data-ar="بناء حلول قوية مع ضمان الجودة الصارم">Building robust solutions with rigorous quality assurance</p>
+                    </div>
+                    
+                    <!-- Deployment -->
+                    <div class="process-card text-center">
+                        <div class="process-step-icon relative mb-8">
+                            <div class="process-step-badge w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <span class="text-2xl font-bold text-white">4</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary mb-4" data-en="Launch & Support" data-ar="الإطلاق والدعم">Launch & Support</h3>
+                        <p class="text-gray-600" data-en="Smooth deployment with ongoing maintenance and support" data-ar="نشر سلس مع الصيانة والدعم المستمر">Smooth deployment with ongoing maintenance and support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                    <span class="text-sm font-semibold" data-en="Testimonials" data-ar="شهادات العملاء">Testimonials</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4" 
+                    data-en="What Our Clients Say" 
+                    data-ar="ما يقوله عملاؤنا">
+                    What Our Clients Say
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" 
+                   data-en="Trusted by businesses across MENA to deliver exceptional digital solutions" 
+                   data-ar="موثوق بها من قبل الشركات عبر منطقة الشرق الأوسط وشمال أفريقيا لتقديم حلول رقمية استثنائية">
+                    Trusted by businesses across MENA to deliver exceptional digital solutions
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-secondary">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic" 
+                       data-en="Elenta Systems transformed our entire business operations with their custom ERP solution. The bilingual interface and cultural understanding made the transition seamless for our team." 
+                       data-ar="غيرت شركة إلنتا سيستمز عمليات أعمالنا بالكامل بحل تخطيط الموارد المؤسسية المخصص. الواجهة ثنائية اللغة والفهم الثقافي جعل الانتقال سلساً لفريقنا.">
+                        "Elenta Systems transformed our entire business operations with their custom ERP solution. The bilingual interface and cultural understanding made the transition seamless for our team."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-secondary font-semibold">AH</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-primary" data-en="Ahmed Hassan" data-ar="أحمد حسن">Ahmed Hassan</h4>
+                            <p class="text-sm text-gray-500" data-en="CEO, TechCorp Egypt" data-ar="المدير التنفيذي، تك كورب مصر">CEO, TechCorp Egypt</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-secondary">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic" 
+                       data-en="Outstanding mobile app development! They created an intuitive e-commerce platform that significantly increased our online sales. Professional, reliable, and always on time." 
+                       data-ar="تطوير تطبيقات الهاتف المحمول المتميز! أنشأوا منصة تجارة إلكترونية بديهية زادت بشكل كبير من مبيعاتنا عبر الإنترنت. مهنيون وموثوقون ودائماً في الوقت المحدد.">
+                        "Outstanding mobile app development! They created an intuitive e-commerce platform that significantly increased our online sales. Professional, reliable, and always on time."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-secondary font-semibold">SM</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-primary" data-en="Sarah Mohamed" data-ar="سارة محمد">Sarah Mohamed</h4>
+                            <p class="text-sm text-gray-500" data-en="Founder, Digital Bazaar" data-ar="المؤسس، البازار الرقمي">Founder, Digital Bazaar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-secondary">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic" 
+                       data-en="Their AI automation solution revolutionized our workflow efficiency. The intelligent reporting dashboard provides insights we never had before. Highly recommend their expertise!" 
+                       data-ar="حل الأتمتة بالذكاء الاصطناعي الخاص بهم ثوّر كفاءة سير العمل لدينا. لوحة التحكم الذكية للتقارير توفر رؤى لم نحصل عليها من قبل. أنصح بشدة بخبرتهم!">
+                        "Their AI automation solution revolutionized our workflow efficiency. The intelligent reporting dashboard provides insights we never had before. Highly recommend their expertise!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-secondary font-semibold">KA</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-primary" data-en="Khalid Al-Rashid" data-ar="خالد الراشد">Khalid Al-Rashid</h4>
+                            <p class="text-sm text-gray-500" data-en="CTO, Innovation Hub" data-ar="مدير التكنولوجيا، مركز الابتكار">CTO, Innovation Hub</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Why Choose Us Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                    <span class="text-sm font-semibold" data-en="Why Choose Us" data-ar="لماذا تختارنا">Why Choose Us</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-primary mb-8" 
+                    data-en="Your Trusted Digital Transformation Partner" 
+                    data-ar="شريكك الموثوق للتحول الرقمي">
+                    Your Trusted Digital Transformation Partner
+                </h2>
+                <p class="about-text text-lg text-gray-600 leading-relaxed mb-12" 
+                   data-en="Based in Egypt and serving the MENA region, Elenta Systems combines cutting-edge technology with deep cultural understanding. We deliver solutions that are not just functional, but culturally relevant, user-friendly, and designed to scale with your business growth." 
+                   data-ar="تقع شركة إلنتا سيستمز في مصر وتخدم منطقة الشرق الأوسط وشمال أفريقيا، وتجمع بين التكنولوجيا المتطورة والفهم الثقافي العميق. نقدم حلولاً ليست وظيفية فحسب، بل ذات صلة ثقافية وسهلة الاستخدام ومصممة للنمو مع نمو عملك.">
+                    Based in Egypt and serving the MENA region, Elenta Systems combines cutting-edge technology with deep cultural understanding. We deliver solutions that are not just functional, but culturally relevant, user-friendly, and designed to scale with your business growth.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Regional Expertise -->
+                    <div class="feature-card text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary mb-3" 
+                            data-en="MENA Regional Expertise" 
+                            data-ar="خبرة إقليمية في الشرق الأوسط وشمال أفريقيا">
+                            MENA Regional Expertise
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="Deep understanding of local markets, regulations, and cultural nuances" 
+                           data-ar="فهم عميق للأسواق المحلية واللوائح والفروق الثقافية">
+                            Deep understanding of local markets, regulations, and cultural nuances
+                        </p>
+                    </div>
+                    
+                    <!-- Bilingual Solutions -->
+                    <div class="feature-card text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary mb-3" 
+                            data-en="Bilingual Excellence" 
+                            data-ar="التميز ثنائي اللغة">
+                            Bilingual Excellence
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="Native Arabic and English support with proper RTL implementation" 
+                           data-ar="دعم أصلي للعربية والإنجليزية مع تنفيذ صحيح للنصوص من اليمين إلى اليسار">
+                            Native Arabic and English support with proper RTL implementation
+                        </p>
+                    </div>
+                    
+                    <!-- Scalable Technology -->
+                    <div class="feature-card text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary mb-3" 
+                            data-en="Future-Ready Technology" 
+                            data-ar="تكنولوجيا مستعدة للمستقبل">
+                            Future-Ready Technology
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="Modern, scalable solutions built with latest frameworks and best practices" 
+                           data-ar="حلول حديثة وقابلة للتوسع مبنية بأحدث الأطر وأفضل الممارسات">
+                            Modern, scalable solutions built with latest frameworks and best practices
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                    <span class="text-sm font-semibold" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4" 
+                    data-en="Frequently Asked Questions" 
+                    data-ar="الأسئلة المتكررة">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" 
+                   data-en="Find answers to common questions about our services and processes" 
+                   data-ar="اعثر على إجابات للأسئلة الشائعة حول خدماتنا وعملياتنا">
+                    Find answers to common questions about our services and processes
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <h3 class="text-lg font-semibold text-primary mb-3" 
+                            data-en="What technologies do you specialize in?" 
+                            data-ar="ما هي التقنيات التي تتخصصون فيها؟">
+                            What technologies do you specialize in?
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="We specialize in .NET and Angular development, advanced AI solutions (LLM, RAG, AI Agents, Chatbots), cloud platforms (AWS, Azure), and enterprise solutions like ERP and CRM systems." 
+                           data-ar="نتخصص في تطوير .NET و Angular، وحلول الذكاء الاصطناعي المتقدمة (LLM، RAG، الوكلاء الذكيين، روبوتات الدردشة)، والمنصات السحابية (AWS، Azure)، والحلول المؤسسية مثل أنظمة تخطيط الموارد المؤسسية وإدارة علاقات العملاء.">
+                            We specialize in .NET and Angular development, advanced AI solutions (LLM, RAG, AI Agents, Chatbots), cloud platforms (AWS, Azure), and enterprise solutions like ERP and CRM systems.
+                        </p>
+                    </div>
+                    
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <h3 class="text-lg font-semibold text-primary mb-3" 
+                            data-en="How long does a typical project take?" 
+                            data-ar="كم يستغرق المشروع النموذجي؟">
+                            How long does a typical project take?
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="Project timelines vary based on complexity and requirements. Simple websites take 2-4 weeks, mobile apps 6-12 weeks, and enterprise solutions 3-6 months. We provide detailed timelines during the planning phase." 
+                           data-ar="تختلف الجداول الزمنية للمشاريع حسب التعقيد والمتطلبات. المواقع البسيطة تستغرق 2-4 أسابيع، تطبيقات الهاتف المحمول 6-12 أسبوعاً، والحلول المؤسسية 3-6 أشهر. نقدم جداول زمنية مفصلة خلال مرحلة التخطيط.">
+                            Project timelines vary based on complexity and requirements. Simple websites take 2-4 weeks, mobile apps 6-12 weeks, and enterprise solutions 3-6 months. We provide detailed timelines during the planning phase.
+                        </p>
+                    </div>
+                    
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <h3 class="text-lg font-semibold text-primary mb-3" 
+                            data-en="Do you provide ongoing support and maintenance?" 
+                            data-ar="هل تقدمون الدعم والصيانة المستمرة؟">
+                            Do you provide ongoing support and maintenance?
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="Yes, we offer comprehensive post-launch support including bug fixes, security updates, performance monitoring, and feature enhancements. We provide different support packages to meet your specific needs." 
+                           data-ar="نعم، نقدم دعماً شاملاً بعد الإطلاق يشمل إصلاح الأخطاء وتحديثات الأمان ومراقبة الأداء وتحسين الميزات. نقدم حزم دعم مختلفة لتلبية احتياجاتك المحددة.">
+                            Yes, we offer comprehensive post-launch support including bug fixes, security updates, performance monitoring, and feature enhancements. We provide different support packages to meet your specific needs.
+                        </p>
+                    </div>
+                    
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <h3 class="text-lg font-semibold text-primary mb-3" 
+                            data-en="Can you work with our existing team?" 
+                            data-ar="هل يمكنكم العمل مع فريقنا الحالي؟">
+                            Can you work with our existing team?
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="Absolutely! We excel at collaborating with existing teams, whether for additional development resources, specialized expertise, or project consultation. We adapt to your workflow and communication preferences." 
+                           data-ar="بالطبع! نتفوق في التعاون مع الفرق الحالية، سواء للموارد التطويرية الإضافية أو الخبرة المتخصصة أو استشارة المشاريع. نتكيف مع سير عملك وتفضيلات التواصل.">
+                            Absolutely! We excel at collaborating with existing teams, whether for additional development resources, specialized expertise, or project consultation. We adapt to your workflow and communication preferences.
+                        </p>
+                    </div>
+                    
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <h3 class="text-lg font-semibold text-primary mb-3" 
+                            data-en="What is your pricing model?" 
+                            data-ar="ما هو نموذج التسعير الخاص بكم؟">
+                            What is your pricing model?
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="We offer flexible pricing models including fixed-price projects, hourly rates for ongoing work, and retainer agreements for long-term partnerships. Pricing is always transparent with detailed breakdowns provided upfront." 
+                           data-ar="نقدم نماذج تسعير مرنة بما في ذلك المشاريع بسعر ثابت والأسعار بالساعة للعمل المستمر واتفاقيات الحجز للشراكات طويلة المدى. التسعير شفاف دائماً مع تفاصيل مفصلة مقدمة مسبقاً.">
+                            We offer flexible pricing models including fixed-price projects, hourly rates for ongoing work, and retainer agreements for long-term partnerships. Pricing is always transparent with detailed breakdowns provided upfront.
+                        </p>
+                    </div>
+                    
+                    <!-- FAQ 6 -->
+                    <div class="faq-item">
+                        <h3 class="text-lg font-semibold text-primary mb-3" 
+                            data-en="Do you work with international clients?" 
+                            data-ar="هل تعملون مع العملاء الدوليين؟">
+                            Do you work with international clients?
+                        </h3>
+                        <p class="text-gray-600" 
+                           data-en="Yes, we work with clients globally while specializing in the MENA region. Our bilingual team and understanding of international business practices make us an ideal partner for cross-border projects." 
+                           data-ar="نعم، نعمل مع العملاء عالمياً بينما نتخصص في منطقة الشرق الأوسط وشمال أفريقيا. فريقنا ثنائي اللغة وفهمنا لممارسات الأعمال الدولية يجعلنا شريكاً مثالياً للمشاريع العابرة للحدود.">
+                            Yes, we work with clients globally while specializing in the MENA region. Our bilingual team and understanding of international business practices make us an ideal partner for cross-border projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                    <span class="text-sm font-semibold" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-primary mb-4" 
+                    data-en="Get In Touch" 
+                    data-ar="تواصل معنا">
+                    Get In Touch
+                </h2>
+                <p class="section-subtitle text-lg text-gray-600 max-w-2xl mx-auto" 
+                   data-en="Ready to transform your ideas into reality? Let's discuss your project and explore how we can help you achieve your digital goals." 
+                   data-ar="هل أنت مستعد لتحويل أفكارك إلى واقع؟ دعنا نناقش مشروعك ونستكشف كيف يمكننا مساعدتك في تحقيق أهدافك الرقمية.">
+                    Ready to transform your ideas into reality? Let's discuss your project and explore how we can help you achieve your digital goals.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Form - Left Side -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-primary mb-6" 
+                        data-en="Send us a Message" 
+                        data-ar="أرسل لنا رسالة">
+                        Send us a Message
+                    </h3>
+                    
+                    <form id="contact-form" class="space-y-6" action="https://formsubmit.co/04ad4846f2ad2f7a72265ec98df782f3" method="POST">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="form-label block text-sm font-medium text-gray-700 mb-2" 
+                                       data-en="Full Name" 
+                                       data-ar="الاسم الكامل">
+                                    Full Name
+                                </label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200"
+                                       placeholder="Your Name" 
+                                       data-placeholder-en="Your Name" 
+                                       data-placeholder-ar="اسمك">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="form-label block text-sm font-medium text-gray-700 mb-2" 
+                                       data-en="Email Address" 
+                                       data-ar="البريد الإلكتروني">
+                                    Email Address
+                                </label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200"
+                                       placeholder="your@email.com"
+                                       data-placeholder-en="your@email.com" 
+                                       data-placeholder-ar="your@email.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="form-label block text-sm font-medium text-gray-700 mb-2" 
+                                   data-en="Phone Number (Optional)" 
+                                   data-ar="رقم الهاتف (اختياري)">
+                                Phone Number (Optional)
+                            </label>
+                            <input type="tel" id="phone" name="phone" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200"
+                                   placeholder="+20 xxx xxx xxxx" 
+                                   data-placeholder-en="+20 xxx xxx xxxx" 
+                                   data-placeholder-ar="+20 xxx xxx xxxx">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="form-label block text-sm font-medium text-gray-700 mb-2" 
+                                   data-en="Service Interested In" 
+                                   data-ar="الخدمة المهتم بها">
+                                Service Interested In
+                            </label>
+                            <select id="service" name="service" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200">
+                                <option value="" data-en="Select a service" data-ar="اختر خدمة">Select a service</option>
+                                <option value="enterprise" data-en="Enterprise Solutions" data-ar="حلول المؤسسات">Enterprise Solutions</option>
+                                <option value="ai" data-en="AI & Automation" data-ar="الذكاء الاصطناعي والأتمتة">AI & Automation</option>
+                                <option value="web-mobile" data-en="Web & Mobile Development" data-ar="تطوير الويب والهاتف">Web & Mobile Development</option>
+                                <option value="cloud" data-en="Cloud Solutions" data-ar="الحلول السحابية">Cloud Solutions</option>
+                                <option value="design" data-en="UX/UI Design" data-ar="تصميم تجربة المستخدم">UX/UI Design</option>
+                                <option value="transformation" data-en="Digital Transformation" data-ar="التحول الرقمي">Digital Transformation</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="form-label block text-sm font-medium text-gray-700 mb-2" 
+                                   data-en="Project Details" 
+                                   data-ar="تفاصيل المشروع">
+                                Project Details
+                            </label>
+                            <textarea id="message" name="message" rows="5" required 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200 resize-none"
+                                      placeholder="Tell us about your project, requirements, and timeline..."
+                                      data-placeholder-en="Tell us about your project, requirements, and timeline..." 
+                                      data-placeholder-ar="أخبرنا عن مشروعك ومتطلباتك والجدول الزمني..."></textarea>
+                        </div>
+                        
+                        <!-- Hidden fields for FormSubmit configuration -->
+                        <input type="hidden" name="_subject" value="New Contact Form Submission from Elenta Website">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://elenta-systems.netlify.app/#contact">
+                        
+                        <button type="submit" 
+                                class="submit-btn w-full bg-secondary hover:bg-blue-500 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg" 
+                                data-en="Send Message" 
+                                data-ar="إرسال الرسالة">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information - Right Side -->
+                <div class="space-y-8">
+                    <!-- Contact Details -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-primary mb-6" 
+                            data-en="Contact Information" 
+                            data-ar="معلومات الاتصال">
+                            Contact Information
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Email -->
+                            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-1" data-en="Email Address" data-ar="البريد الإلكتروني">Email Address</h4>
+                                    <p class="text-gray-600">elentasystems@outlook.com</p>
+                                    <p class="text-sm text-gray-500 mt-1" data-en="We'll respond within 24 hours" data-ar="سنرد في غضون 24 ساعة">We'll respond within 24 hours</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Location -->
+                            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-1" data-en="Location" data-ar="الموقع">Location</h4>
+                                    <p class="text-gray-600" data-en="Alexandria, Egypt" data-ar="الاسكندرية ، مصر">Alexandria, Egypt</p>
+                                    <p class="text-sm text-gray-500 mt-1" data-en="Serving MENA Region" data-ar="نخدم منطقة الشرق الأوسط وشمال أفريقيا">Serving MENA Region</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Business Hours -->
+                            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-1" data-en="Business Hours" data-ar="ساعات العمل">Business Hours</h4>
+                                    <p class="text-gray-600" data-en="Sunday - Thursday: 9:00 AM - 6:00 PM (EET)" data-ar="الأحد - الخميس: 9:00 ص - 6:00 م (توقيت القاهرة)">Sunday - Thursday: 9:00 AM - 6:00 PM (EET)</p>
+                                    <p class="text-sm text-gray-500 mt-1" data-en="Emergency support available 24/7" data-ar="دعم الطوارئ متاح 24/7">Emergency support available 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-primary mb-6" 
+                            data-en="Follow Us" 
+                            data-ar="تابعنا">
+                            Follow Us
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/company/elentasystems/" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="flex items-center space-x-4 rtl:space-x-reverse p-4 bg-gray-50 rounded-lg hover:bg-blue-50 hover:shadow-md transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary group-hover:text-blue-600 transition-colors duration-300">LinkedIn</h4>
+                                    <p class="text-sm text-gray-500" data-en="Professional updates and insights" data-ar="تحديثات مهنية ورؤى">Professional updates and insights</p>
+                                </div>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                            
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/profile.php?id=61578835569888" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="flex items-center space-x-4 rtl:space-x-reverse p-4 bg-gray-50 rounded-lg hover:bg-blue-50 hover:shadow-md transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary group-hover:text-blue-500 transition-colors duration-300">Facebook</h4>
+                                    <p class="text-sm text-gray-500" data-en="Latest news and community updates" data-ar="آخر الأخبار وتحديثات المجتمع">Latest news and community updates</p>
+                                </div>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Response Time -->
+                    <div class="bg-gradient-to-br from-secondary/10 to-primary/10 p-8 rounded-2xl border border-secondary/20">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary mb-2" data-en="Quick Response" data-ar="استجابة سريعة">Quick Response</h3>
+                            <p class="text-gray-600" data-en="We typically respond to all inquiries within 2-4 hours during business hours" data-ar="نحن عادة نرد على جميع الاستفسارات في غضون 2-4 ساعات خلال ساعات العمل">We typically respond to all inquiries within 2-4 hours during business hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="bg-primary text-light py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <img src="/assets/logo/Logo-White.png" alt="Elenta Systems" class="h-14 w-auto mb-6">
+                    <p class="text-gray-300 mb-6 leading-relaxed max-w-md" 
+                       data-en="Empowering businesses across MENA with innovative digital solutions. We transform ideas into interfaces that drive growth and operational excellence." 
+                       data-ar="تمكين الشركات عبر منطقة الشرق الأوسط وشمال أفريقيا بحلول رقمية مبتكرة. نحول الأفكار إلى واجهات تحفز النمو والتميز التشغيلي.">
+                        Empowering businesses across MENA with innovative digital solutions. We transform ideas into interfaces that drive growth and operational excellence.
+                    </p>
+                    
+                    <!-- Social Links -->
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+                        <a href="https://www.linkedin.com/company/elentasystems/" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-secondary hover:scale-110 transition-all duration-300 group">
+                            <svg class="w-5 h-5 text-gray-300 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        
+                        <a href="https://www.facebook.com/profile.php?id=61578835569888" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-secondary hover:scale-110 transition-all duration-300 group">
+                            <svg class="w-5 h-5 text-gray-300 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        
+                        <a href="mailto:elentasystems@outlook.com" 
+                           class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-secondary hover:scale-110 transition-all duration-300 group">
+                            <svg class="w-5 h-5 text-gray-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6" data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h3>
+                    <nav class="space-y-3">
+                        <a href="#home" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="Home" data-ar="الرئيسية">Home</a>
+                        <a href="#services" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="Services" data-ar="الخدمات">Services</a>
+                        <a href="#about" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="About" data-ar="عن الشركة">About</a>
+                        <a href="#contact" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                    </nav>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6" data-en="Our Services" data-ar="خدماتنا">Our Services</h3>
+                    <nav class="space-y-3">
+                        <a href="#services" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="Enterprise Solutions" data-ar="حلول المؤسسات">Enterprise Solutions</a>
+                        <a href="#services" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="AI & Automation" data-ar="الذكاء الاصطناعي">AI & Automation</a>
+                        <a href="#services" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="Web & Mobile" data-ar="الويب والهاتف">Web & Mobile</a>
+                        <a href="#services" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="Cloud Solutions" data-ar="الحلول السحابية">Cloud Solutions</a>
+                        <a href="#services" class="footer-link block text-gray-300 hover:text-secondary transition-colors duration-200" data-en="UX/UI Design" data-ar="تصميم التجربة">UX/UI Design</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Bottom Section -->
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 rtl:space-x-reverse">
+                        <p class="text-gray-400 text-sm" 
+                           data-en="© 2025 Elenta Systems. All rights reserved." 
+                           data-ar="© 2025 شركة إلنتا سيستمز. جميع الحقوق محفوظة.">
+                            © 2025 Elenta Systems. All rights reserved.
+                        </p>
+                        <div class="flex space-x-4 rtl:space-x-reverse text-sm">
+                            <a href="/privacy-policy" class="text-gray-400 hover:text-secondary transition-colors duration-200" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                            <a href="/terms-of-service" class="text-gray-400 hover:text-secondary transition-colors duration-200" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+            </footer>
+        </div>
+    </div>
+
+    </main>
+
+    <!-- Success Toast -->
+    <div id="success-toast" class="fixed top-4 right-0 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <div class="flex items-center space-x-3">
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="toast-message" 
+                  data-en="Message sent successfully! We'll get back to you soon." 
+                  data-ar="تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.">
+                Message sent successfully! We'll get back to you soon.
+            </span>
+        </div>
+    </div>
+
+   
+
+</BaseLayout>

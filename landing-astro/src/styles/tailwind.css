@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "./custom.css";
+
+@theme {
+  --color-primary: #05122d;
+  --color-secondary: #36b1e1;
+  --color-light: #f8f9fb;
+
+  --font-inter: "Inter", sans-serif;
+  --font-kufi: "Noto Kufi Arabic", sans-serif;
+}
+

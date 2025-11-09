@@ -1,0 +1,26 @@
+{
+  "name": "landing-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "concurrently \"node ./tools/build-client-scripts.mjs --watch\" \"astro dev\"",
+    "build:scripts": "node ./tools/build-client-scripts.mjs",
+    "build": "npm run build:scripts && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate:translations": "node ./tools/generate-translations.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.15.4",
+    "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "autoprefixer": "^10.4.21",
+    "cheerio": "^1.1.2",
+    "concurrently": "^8.2.2",
+    "esbuild": "^0.21.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.0.0"
+  }
+}

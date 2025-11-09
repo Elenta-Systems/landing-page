@@ -1,0 +1,135 @@
+---
+import '../styles/tailwind.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: 'en' | 'ar';
+  dir?: 'ltr' | 'rtl';
+  canonical?: string;
+  image?: string;
+  keywords?: string[];
+}
+
+const defaultTitle = 'Elenta Systems | Digital Transformation for MENA';
+const defaultDescription =
+  'Elenta Systems delivers human-centered digital transformation, AI, and enterprise technology solutions tailored for organisations across the MENA region.';
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  lang = 'en',
+  dir = lang === 'ar' ? 'rtl' : 'ltr',
+  image = '/assets/logo/Logo.png',
+  keywords = [
+    'Elenta Systems',
+    'Digital Transformation',
+    '.NET Development',
+    'AI Solutions',
+    'MENA',
+    'Enterprise Software',
+  ],
+} = Astro.props satisfies Props;
+
+const site = Astro.site ?? new URL('https://elenta-systems.netlify.app/');
+const canonical =
+  Astro.props.canonical ??
+  new URL(Astro.url.pathname.replace(/\/$/, '') || '/', site).toString();
+
+const ogTitle = title;
+const ogDescription = description;
+const baseUrl = site.toString().replace(/\/$/, '');
+
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Elenta Systems',
+  url: baseUrl,
+  logo: `${baseUrl}${image}`,
+  sameAs: [
+    'https://www.linkedin.com/company/elenta-systems',
+    'https://x.com/elenta_systems',
+  ],
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+201234567890',
+      contactType: 'Sales',
+      areaServed: ['EG', 'SA', 'AE'],
+      availableLanguage: ['English', 'Arabic'],
+    },
+  ],
+};
+---
+
+<html lang={lang} dir={dir} class={lang === 'ar' ? 'font-kufi' : 'font-inter'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <meta name="author" content="Elenta Systems" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content={lang === 'ar' ? 'Arabic' : 'English'} />
+    <meta name="revisit-after" content="7 days" />
+
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={`${baseUrl}${image}`} />
+    <meta property="og:url" content={canonical} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={`${baseUrl}${image}`} />
+
+    <link rel="icon" href="/assets/logo/Favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  </head>
+  <body
+    class:list={{
+      'font-inter': lang === 'en',
+      'font-kufi': lang === 'ar',
+      'bg-white': true,
+      'text-primary': true,
+    }}
+  >
+    <a
+      href="#main"
+      class="skip-link sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-secondary focus:text-white focus:px-4 focus:py-2 focus:rounded-md"
+    >
+      Skip to content
+    </a>
+    <slot />
+    <footer class="sr-only">
+      <p>
+        {lang === 'ar'
+          ? 'جميع الحقوق محفوظة © ' + new Date().getFullYear()
+          : 'All rights reserved © ' + new Date().getFullYear()}
+      </p>
+    </footer>
+
+    <script type="module">
+      const html = document.documentElement;
+      const initialDir = '{dir}';
+      if (initialDir) {
+        html.setAttribute('dir', initialDir);
+      }
+    </script>
+    <script type="module" src="/scripts/main.js"></script>
+    <script type="module" src="/scripts/gsapAnimation.js"></script>
+  </body>
+</html>
+
