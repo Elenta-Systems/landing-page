@@ -4,6 +4,19 @@ const html = document.documentElement;
 const langEnBtn = document.getElementById('lang-en');
 const langArBtn = document.getElementById('lang-ar');
 
+function scrollToElement(target) {
+    if (!target) return;
+
+    if (window.gsapSmoother && typeof window.gsapSmoother.scrollTo === 'function') {
+        window.gsapSmoother.scrollTo(target, true, "top top");
+    } else {
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
 function updateLanguage(lang) {
     currentLang = lang;
     
@@ -75,10 +88,7 @@ function initSmoothScrolling() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                scrollToElement(target);
                 // Close mobile menu if open
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (mobileMenu) {
@@ -172,10 +182,7 @@ function initCtaButton() {
         btn.addEventListener('click', () => {
             const contactSection = document.querySelector('#contact');
             if (contactSection) {
-                contactSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                scrollToElement(contactSection);
             } else {
                 // If contact section doesn't exist on this page, redirect to index.html#contact
                 window.location.href = 'index.html#contact';
@@ -189,10 +196,7 @@ function initCtaButton() {
         learnMoreBtn.addEventListener('click', () => {
             const servicesSection = document.querySelector('#services');
             if (servicesSection) {
-                servicesSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                scrollToElement(servicesSection);
             } else {
                 // If services section doesn't exist on this page, redirect to index.html#services
                 window.location.href = 'index.html#services';

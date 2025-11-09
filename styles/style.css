@@ -17,6 +17,21 @@
     background: linear-gradient(135deg, #05122D 0%, #0A1B3D 100%);
 }
 
+#smooth-wrapper {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+#smooth-content {
+    min-height: 100%;
+    will-change: transform;
+}
+
+.hero-content {
+    transform-origin: center top;
+}
+
 /* Floating Shapes Animation */
 .floating-shapes {
     position: absolute;
