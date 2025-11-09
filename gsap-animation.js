@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 gsap.set(slide, {
                     autoAlpha: index === 0 ? 1 : 0,
-                    yPercent: index === 0 ? 0 : 32,
+                    yPercent: index === 0 ? 0 : 34,
                     zIndex: slides.length - index
                 });
 
