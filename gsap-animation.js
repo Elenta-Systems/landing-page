@@ -1029,6 +1029,390 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ====================================
+    // NAVBAR ANIMATIONS
+    // ====================================
+    
+    const header = document.querySelector('header');
+    const logo = header ? header.querySelector('img') : null;
+    const navLinks = header ? header.querySelectorAll('.nav-link') : null;
+    const langButtons = header ? header.querySelectorAll('.lang-btn') : null;
+    const mobileMenuBtn = header ? header.querySelector('#mobile-menu-btn') : null;
+    const mobileMenu = document.querySelector('#mobile-menu');
+    
+    if (header) {
+        // Initial state - hide navbar
+        gsap.set(header, { y: -100, opacity: 0 });
+        
+        // Navbar entrance animation on page load
+        const navbarTimeline = gsap.timeline({ delay: 0.3 });
+        
+        navbarTimeline.to(header, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+        
+        // Logo animation with rotation and scale
+        if (logo) {
+            gsap.set(logo, { scale: 0, rotate: -180, opacity: 0 });
+            navbarTimeline.to(logo, {
+                scale: 1,
+                rotate: 0,
+                opacity: 1,
+                duration: 0.9,
+                ease: 'elastic.out(1, 0.6)'
+            }, '-=0.5');
+        }
+        
+        // Nav links staggered animation
+        if (navLinks && navLinks.length) {
+            gsap.set(navLinks, { y: -20, opacity: 0 });
+            navbarTimeline.to(navLinks, {
+                y: 0,
+                opacity: 1,
+                duration: 0.6,
+                stagger: 0.08,
+                ease: 'power2.out'
+            }, '-=0.6');
+            
+            // Magnetic hover effect for nav links
+            navLinks.forEach(link => {
+                // Create animated underline
+                const underline = document.createElement('span');
+                underline.classList.add('nav-link-underline');
+                link.style.position = 'relative';
+                link.style.display = 'inline-block';
+                link.appendChild(underline);
+                
+                gsap.set(underline, {
+                    position: 'absolute',
+                    bottom: '-4px',
+                    left: '0',
+                    width: '0%',
+                    height: '2px',
+                    background: 'linear-gradient(90deg, #36B1E1, #2563eb)',
+                    borderRadius: '2px',
+                    transformOrigin: 'left center'
+                });
+                
+                // Hover animations
+                link.addEventListener('mouseenter', () => {
+                    gsap.to(link, {
+                        y: -2,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                    
+                    gsap.to(underline, {
+                        width: '100%',
+                        duration: 0.4,
+                        ease: 'power2.out'
+                    });
+                });
+                
+                link.addEventListener('mouseleave', () => {
+                    gsap.to(link, {
+                        y: 0,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                    
+                    gsap.to(underline, {
+                        width: '0%',
+                        duration: 0.3,
+                        ease: 'power2.in'
+                    });
+                });
+                
+                // Click ripple effect
+                link.addEventListener('click', (e) => {
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('nav-ripple');
+                    
+                    const rect = link.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    Object.assign(ripple.style, {
+                        position: 'absolute',
+                        width: `${size}px`,
+                        height: `${size}px`,
+                        left: `${x}px`,
+                        top: `${y}px`,
+                        background: 'radial-gradient(circle, rgba(54, 177, 225, 0.4), transparent)',
+                        borderRadius: '50%',
+                        pointerEvents: 'none',
+                        transform: 'scale(0)',
+                        zIndex: '-1'
+                    });
+                    
+                    link.appendChild(ripple);
+                    
+                    gsap.to(ripple, {
+                        scale: 2,
+                        opacity: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        onComplete: () => ripple.remove()
+                    });
+                });
+            });
+        }
+        
+        // Language buttons animation
+        if (langButtons && langButtons.length) {
+            gsap.set(langButtons, { scale: 0, opacity: 0 });
+            navbarTimeline.to(langButtons, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.5,
+                stagger: 0.1,
+                ease: 'back.out(1.7)'
+            }, '-=0.4');
+            
+            // Add smooth transition for language toggle
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    gsap.to(btn, {
+                        scale: 0.9,
+                        duration: 0.1,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: 'power2.inOut'
+                    });
+                });
+            });
+        }
+        
+        // Mobile menu button animation
+        if (mobileMenuBtn) {
+            gsap.set(mobileMenuBtn, { scale: 0, opacity: 0 });
+            navbarTimeline.to(mobileMenuBtn, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.5,
+                ease: 'back.out(1.7)'
+            }, '-=0.4');
+            
+            // Mobile menu toggle animation
+            let isMenuOpen = false;
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                
+                // Button icon animation
+                const icon = mobileMenuBtn.querySelector('svg');
+                gsap.to(icon, {
+                    rotation: isMenuOpen ? 90 : 0,
+                    scale: isMenuOpen ? 0.9 : 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                if (mobileMenu) {
+                    if (isMenuOpen) {
+                        // Open animation
+                        mobileMenu.classList.remove('hidden');
+                        gsap.set(mobileMenu, { height: 0, opacity: 0 });
+                        
+                        gsap.to(mobileMenu, {
+                            height: 'auto',
+                            opacity: 1,
+                            duration: 0.4,
+                            ease: 'power3.out'
+                        });
+                        
+                        const mobileLinks = mobileMenu.querySelectorAll('.nav-link');
+                        gsap.fromTo(mobileLinks, {
+                            x: -30,
+                            opacity: 0
+                        }, {
+                            x: 0,
+                            opacity: 1,
+                            duration: 0.4,
+                            stagger: 0.08,
+                            ease: 'power2.out',
+                            delay: 0.1
+                        });
+                    } else {
+                        // Close animation
+                        gsap.to(mobileMenu, {
+                            height: 0,
+                            opacity: 0,
+                            duration: 0.3,
+                            ease: 'power2.in',
+                            onComplete: () => {
+                                mobileMenu.classList.add('hidden');
+                            }
+                        });
+                    }
+                }
+            });
+        }
+        
+        // Scroll-based navbar animations
+        let lastScrollY = 0;
+        let isNavbarVisible = true;
+        let isNavbarShrunk = false;
+        
+        ScrollTrigger.create({
+            start: 'top top',
+            end: 'max',
+            onUpdate: (self) => {
+                const currentScrollY = self.scroll();
+                const scrollingDown = currentScrollY > lastScrollY;
+                const scrollDistance = Math.abs(currentScrollY - lastScrollY);
+                
+                // Hide/Show navbar based on scroll direction
+                if (scrollDistance > 10) {
+                    if (scrollingDown && currentScrollY > 100 && isNavbarVisible) {
+                        // Hide navbar when scrolling down
+                        isNavbarVisible = false;
+                        gsap.to(header, {
+                            y: -100,
+                            duration: 0.3,
+                            ease: 'power2.in'
+                        });
+                    } else if (!scrollingDown && !isNavbarVisible) {
+                        // Show navbar when scrolling up
+                        isNavbarVisible = true;
+                        gsap.to(header, {
+                            y: 0,
+                            duration: 0.3,
+                            ease: 'power2.out'
+                        });
+                    }
+                }
+                
+                // Shrink navbar on scroll
+                if (currentScrollY > 50 && !isNavbarShrunk) {
+                    isNavbarShrunk = true;
+                    
+                    gsap.to(header, {
+                        backgroundColor: 'rgba(255, 255, 255, 0.98)',
+                        backdropFilter: 'blur(20px)',
+                        boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.1)',
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                    
+                    gsap.to(header.querySelector('.container > div'), {
+                        height: '60px',
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                    
+                    if (logo) {
+                        gsap.to(logo, {
+                            scale: 0.85,
+                            duration: 0.3,
+                            ease: 'power2.out'
+                        });
+                    }
+                    
+                } else if (currentScrollY <= 50 && isNavbarShrunk) {
+                    isNavbarShrunk = false;
+                    
+                    gsap.to(header, {
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        backdropFilter: 'blur(4px)',
+                        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                    
+                    gsap.to(header.querySelector('.container > div'), {
+                        height: '64px',
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                    
+                    if (logo) {
+                        gsap.to(logo, {
+                            scale: 1,
+                            duration: 0.3,
+                            ease: 'power2.out'
+                        });
+                    }
+                }
+                
+                lastScrollY = currentScrollY;
+            }
+        });
+        
+        // Active section indicator
+        const sections = document.querySelectorAll('section[id]');
+        
+        if (sections.length && navLinks) {
+            ScrollTrigger.batch(sections, {
+                onEnter: (batch) => {
+                    const currentSection = batch[0];
+                    const sectionId = currentSection.getAttribute('id');
+                    
+                    navLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        const isActive = href === `#${sectionId}`;
+                        
+                        if (isActive) {
+                            gsap.to(link, {
+                                color: '#36B1E1',
+                                fontWeight: 600,
+                                duration: 0.3,
+                                ease: 'power2.out'
+                            });
+                        } else {
+                            gsap.to(link, {
+                                color: '#111827',
+                                fontWeight: 400,
+                                duration: 0.3,
+                                ease: 'power2.out'
+                            });
+                        }
+                    });
+                },
+                start: 'top center',
+                end: 'bottom center'
+            });
+        }
+        
+        // Logo hover animation
+        if (logo) {
+            const logoParent = logo.parentElement;
+            
+            logoParent.addEventListener('mouseenter', () => {
+                gsap.to(logo, {
+                    scale: 1.1,
+                    rotate: 5,
+                    duration: 0.4,
+                    ease: 'elastic.out(1, 0.5)'
+                });
+            });
+            
+            logoParent.addEventListener('mouseleave', () => {
+                gsap.to(logo, {
+                    scale: isNavbarShrunk ? 0.85 : 1,
+                    rotate: 0,
+                    duration: 0.4,
+                    ease: 'elastic.out(1, 0.5)'
+                });
+            });
+        }
+        
+        // Parallax effect on navbar
+        gsap.to(header, {
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 0.5
+            },
+            ease: 'none'
+        });
+    }
+
     ScrollTrigger.addEventListener('refresh', () => smoother && smoother.refresh && smoother.refresh());
     ScrollTrigger.refresh();
 });
