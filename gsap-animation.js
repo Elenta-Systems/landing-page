@@ -622,7 +622,414 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    ScrollTrigger.addEventListener('refresh', () => smoother && smoother.update());
+    const servicesSection = document.querySelector('#services');
+
+    if (servicesSection) {
+        const stackCards = gsap.utils.toArray('#services .services-stack-track .service-card');
+        const visualWrapper = servicesSection.querySelector('.services-visual');
+        let currentBgEl = servicesSection.querySelector('.services-visual-image--current');
+        let nextBgEl = servicesSection.querySelector('.services-visual-image--next');
+        const detailIndex = servicesSection.querySelector('.services-detail-index');
+        const detailLabel = servicesSection.querySelector('.services-detail-label');
+        const detailTitle = servicesSection.querySelector('.services-detail-title');
+        const detailDescription = servicesSection.querySelector('.services-detail-description');
+        const detailTags = servicesSection.querySelector('.services-detail-tags');
+        const previewCard = servicesSection.querySelector('.services-preview-card');
+        const previewIcon = previewCard ? previewCard.querySelector('.services-preview-icon') : null;
+        const previewBadge = previewCard ? previewCard.querySelector('.services-preview-badge') : null;
+        const previewIndex = previewCard ? previewCard.querySelector('.services-preview-index') : null;
+        const previewTitle = previewCard ? previewCard.querySelector('.services-preview-title') : null;
+        const previewCTA = previewCard ? previewCard.querySelector('.services-preview-cta') : null;
+        const previewArrowIcon = previewCard ? previewCard.querySelector('.services-preview-arrow-icon') : null;
+        const previewGlow = previewCard ? previewCard.querySelector('.services-preview-glow') : null;
+        const mm = gsap.matchMedia();
+
+        let activeServiceIndex = -1;
+        let backgroundTween = null;
+        let previewTween = null;
+
+        const hexToRgba = (hex, alpha = 0.18) => {
+            if (!hex) {
+                return `rgba(37, 99, 235, ${alpha})`;
+            }
+
+            let sanitized = hex.replace('#', '');
+
+            if (sanitized.length === 3) {
+                sanitized = sanitized
+                    .split('')
+                    .map(char => `${char}${char}`)
+                    .join('');
+            }
+
+            const value = parseInt(sanitized, 16);
+
+            if (Number.isNaN(value)) {
+                return `rgba(37, 99, 235, ${alpha})`;
+            }
+
+            const r = (value >> 16) & 255;
+            const g = (value >> 8) & 255;
+            const b = value & 255;
+
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        };
+
+        const setDetailTags = (card, accentColor) => {
+            if (!detailTags) {
+                return;
+            }
+
+            detailTags.innerHTML = '';
+
+            const badges = card.querySelectorAll('.flex.flex-wrap span');
+
+            badges.forEach(badge => {
+                const span = document.createElement('span');
+                span.textContent = badge.textContent.trim();
+                span.style.backgroundColor = hexToRgba(accentColor, 0.18);
+                span.style.color = accentColor || '#38bdf8';
+                detailTags.appendChild(span);
+            });
+        };
+
+        const swapBackgroundImage = (imageUrl, immediate = false) => {
+            if (!currentBgEl || !nextBgEl || !visualWrapper || !imageUrl) {
+                return;
+            }
+
+            if (backgroundTween) {
+                backgroundTween.kill();
+            }
+
+            if (immediate) {
+                gsap.set([currentBgEl, nextBgEl], { opacity: 0 });
+                gsap.set(currentBgEl, {
+                    backgroundImage: `url(${imageUrl})`,
+                    opacity: 1,
+                    scale: 1
+                });
+                return;
+            }
+
+            gsap.set(nextBgEl, {
+                backgroundImage: `url(${imageUrl})`,
+                opacity: 0,
+                scale: 1.08
+            });
+
+            backgroundTween = gsap.timeline();
+
+            backgroundTween.to(currentBgEl, {
+                opacity: 0,
+                scale: 1.05,
+                duration: 0.85,
+                ease: 'power2.out'
+            });
+
+            backgroundTween.to(nextBgEl, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.9,
+                ease: 'power2.out'
+            }, 0);
+
+            backgroundTween.add(() => {
+                const temp = currentBgEl;
+                currentBgEl = nextBgEl;
+                nextBgEl = temp;
+            });
+        };
+
+        const animateTextContent = (element, content, options = {}) => {
+            if (!element) {
+                return;
+            }
+
+            const { duration = 0.85, delay = 0, immediate = false } = options;
+
+            if (immediate || !hasTextPlugin) {
+                gsap.killTweensOf(element);
+                element.textContent = content;
+                return;
+            }
+
+            gsap.killTweensOf(element);
+            element.textContent = '';
+
+            gsap.to(element, {
+                text: content,
+                duration,
+                delay,
+                ease: 'power2.out'
+            });
+        };
+
+        const updatePreviewCard = (card, { index, accentColor, immediate = false } = {}) => {
+            if (!previewCard) {
+                return;
+            }
+
+            if (!card) {
+                previewTween && previewTween.kill();
+                if (immediate) {
+                    gsap.set(previewCard, { autoAlpha: 0, pointerEvents: 'none' });
+                } else {
+                    gsap.to(previewCard, {
+                        autoAlpha: 0,
+                        duration: 0.35,
+                        ease: 'power1.out',
+                        onStart: () => gsap.set(previewCard, { pointerEvents: 'none' })
+                    });
+                }
+                return;
+            }
+
+            const lang = document.documentElement.getAttribute('lang') || 'en';
+            const nextTitleEl = card.querySelector('h3');
+            const nextIcon = card.querySelector('.w-12.h-12');
+            const nextBadge = card.querySelector('.flex.flex-wrap span');
+
+            const nextTitle = nextTitleEl
+                ? nextTitleEl.getAttribute(`data-${lang}`) || nextTitleEl.textContent.trim()
+                : '';
+
+            const badgeLabel = nextBadge ? nextBadge.textContent.trim() : 'Next';
+            const color = accentColor || card.dataset.accent || '#38bdf8';
+
+            const applyContent = () => {
+                if (previewIndex) {
+                    previewIndex.textContent = String((index ?? 0) + 1).padStart(2, '0');
+                    previewIndex.style.color = color;
+                }
+
+                if (previewBadge) {
+                    previewBadge.textContent = badgeLabel.toUpperCase();
+                    previewBadge.style.backgroundColor = hexToRgba(color, 0.2);
+                    previewBadge.style.color = color;
+                }
+
+                if (previewTitle) {
+                    previewTitle.textContent = nextTitle;
+                }
+
+                if (previewCTA) {
+                    previewCTA.style.color = hexToRgba(color, 0.85);
+                }
+
+                if (previewArrowIcon) {
+                    previewArrowIcon.style.color = color;
+                }
+
+                if (previewIcon) {
+                    previewIcon.innerHTML = nextIcon ? nextIcon.innerHTML : '';
+                    previewIcon.style.color = color;
+                    previewIcon.style.boxShadow = `inset 0 0 0 1px ${hexToRgba(color, 0.28)}`;
+                    previewIcon.style.background = hexToRgba(color, 0.12);
+                }
+
+                if (previewGlow) {
+                    previewGlow.style.background = `radial-gradient(circle at 32% 25%, ${hexToRgba(color, 0.55)}, transparent 60%)`;
+                }
+            };
+
+            if (immediate) {
+                previewTween && previewTween.kill();
+                gsap.set(previewCard, { rotationY: 0, autoAlpha: 1, pointerEvents: 'auto' });
+                applyContent();
+                if (previewIcon) {
+                    gsap.set(previewIcon, { scale: 1, rotate: 0 });
+                }
+                if (previewBadge) {
+                    gsap.set(previewBadge, { y: 0, autoAlpha: 1 });
+                }
+                return;
+            }
+
+            previewTween && previewTween.kill();
+
+            previewTween = gsap.timeline();
+
+            previewTween.to(previewCard, {
+                rotationY: 70,
+                autoAlpha: 0,
+                pointerEvents: 'none',
+                duration: 0.35,
+                ease: 'power2.in'
+            });
+
+            previewTween.add(applyContent);
+
+            previewTween.fromTo(previewCard, {
+                rotationY: -70,
+                autoAlpha: 0
+            }, {
+                rotationY: 0,
+                autoAlpha: 1,
+                pointerEvents: 'auto',
+                duration: 0.6,
+                ease: 'power3.out'
+            });
+
+            if (previewIcon) {
+                previewTween.fromTo(previewIcon, {
+                    scale: 0.75,
+                    rotate: -8
+                }, {
+                    scale: 1,
+                    rotate: 0,
+                    duration: 0.6,
+                    ease: 'back.out(1.6)'
+                }, '-=0.35');
+            }
+
+            if (previewBadge) {
+                previewTween.fromTo(previewBadge, {
+                    y: 10,
+                    autoAlpha: 0
+                }, {
+                    y: 0,
+                    autoAlpha: 1,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                }, '-=0.4');
+            }
+        };
+
+        const activateServiceCard = (index, { immediate = false } = {}) => {
+            if (!stackCards.length) {
+                return;
+            }
+
+            const boundedIndex = Math.max(0, Math.min(stackCards.length - 1, index));
+
+            if (boundedIndex === activeServiceIndex && !immediate) {
+                return;
+            }
+
+            const card = stackCards[boundedIndex];
+            const lang = document.documentElement.getAttribute('lang') || 'en';
+            const titleEl = card.querySelector('h3');
+            const descriptionEl = card.querySelector('p');
+            const firstBadge = card.querySelector('.flex.flex-wrap span');
+            const accentColor = card.dataset.accent || '#38bdf8';
+            const backgroundImage = card.dataset.bg;
+
+            const titleText = titleEl
+                ? titleEl.getAttribute(`data-${lang}`) || titleEl.textContent.trim()
+                : '';
+
+            const descriptionText = descriptionEl
+                ? descriptionEl.getAttribute(`data-${lang}`) || descriptionEl.textContent.trim()
+                : '';
+
+            const labelText = firstBadge
+                ? firstBadge.textContent.trim()
+                : titleText;
+
+            if (detailIndex) {
+                detailIndex.textContent = String(boundedIndex + 1).padStart(2, '0');
+                detailIndex.style.backgroundColor = hexToRgba(accentColor, 0.2);
+                detailIndex.style.color = accentColor;
+            }
+
+            if (detailLabel) {
+                animateTextContent(detailLabel, labelText.toUpperCase(), { immediate, duration: 0.65 });
+                detailLabel.style.color = accentColor;
+            }
+
+            animateTextContent(detailTitle, titleText, { immediate, duration: 1 });
+            animateTextContent(detailDescription, descriptionText, { immediate, duration: 1, delay: hasTextPlugin ? 0.05 : 0 });
+
+            setDetailTags(card, accentColor);
+            swapBackgroundImage(backgroundImage, immediate);
+
+            const nextIndex = boundedIndex + 1 < stackCards.length ? boundedIndex + 1 : null;
+            const nextCard = typeof nextIndex === 'number' ? stackCards[nextIndex] : null;
+
+            updatePreviewCard(nextCard, {
+                index: nextIndex,
+                accentColor: nextCard ? nextCard.dataset.accent : undefined,
+                immediate
+            });
+
+            activeServiceIndex = boundedIndex;
+        };
+
+        if (stackCards.length) {
+            activateServiceCard(0, { immediate: true });
+        }
+
+        mm.add('(min-width: 1024px)', () => {
+            if (!stackCards.length) {
+                return;
+            }
+
+            const totalCards = stackCards.length;
+            const segments = Math.max(totalCards - 1, 1);
+
+            const snapConfig = totalCards > 1
+                ? {
+                      snapTo: value => {
+                          const snapped = Math.round(value * segments) / segments;
+                          return Math.min(1, Math.max(0, snapped));
+                      },
+                      duration: 0.45,
+                      ease: 'power2.inOut',
+                      inertia: false
+                  }
+                : false;
+
+            const trigger = ScrollTrigger.create({
+                trigger: servicesSection,
+                start: 'top top',
+                end: () => `+=${totalCards * 320}`,
+                pin: true,
+                scrub: true,
+                anticipatePin: 1,
+                snap: snapConfig,
+                onUpdate: self => {
+                    if (totalCards === 1) {
+                        if (activeServiceIndex !== 0) {
+                            activateServiceCard(0);
+                        }
+                        return;
+                    }
+
+                    const rawIndex = Math.round(self.progress * (totalCards - 1));
+                    const boundedIndex = Math.max(0, Math.min(totalCards - 1, rawIndex));
+
+                    if (boundedIndex !== activeServiceIndex) {
+                        activateServiceCard(boundedIndex);
+                    }
+                }
+            });
+
+            return () => trigger.kill();
+        });
+
+        mm.add('(max-width: 1023px)', () => {
+            if (!stackCards.length) {
+                return;
+            }
+
+            const cardTriggers = stackCards.map((card, index) => ScrollTrigger.create({
+                trigger: card,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                onEnter: () => activateServiceCard(index),
+                onEnterBack: () => activateServiceCard(index)
+            }));
+
+            activateServiceCard(0, { immediate: true });
+
+            return () => {
+                cardTriggers.forEach(trigger => trigger.kill());
+            };
+        });
+    }
+
+    ScrollTrigger.addEventListener('refresh', () => smoother && smoother.refresh && smoother.refresh());
     ScrollTrigger.refresh();
 });
 
