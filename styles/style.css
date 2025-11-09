@@ -344,3 +344,28 @@ header.shadow-lg {
         font-size: 1.5rem;
     }
 }
+
+#about-overview .about-heading {
+    display: inline-block;
+    background-image: linear-gradient(120deg, rgba(54, 177, 225, 0.18), rgba(54, 177, 225, 0.45));
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position: 0 100%;
+    padding: 0.15em 0.35em;
+    border-radius: 0.75rem;
+}
+
+#about-overview .about-stat-card,
+#about-overview .about-media-card,
+#about-overview .about-overlay-title,
+#about-overview .about-overlay-text {
+    will-change: transform, opacity;
+}
+
+#about-overview .about-media-image {
+    will-change: transform;
+}
+
+#about-overview .about-media-icon {
+    will-change: transform, opacity;
+}
