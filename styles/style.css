@@ -142,6 +142,7 @@
 .services-visual-overlay {
     position: absolute;
     inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
     z-index: 1;
@@ -149,7 +150,7 @@
 
 .services-detail {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -426,38 +427,153 @@
 
 @media (min-width: 1024px) {
     .services-showcase {
-        display: grid;
-        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 360px);
-        gap: 3.5rem;
-        align-items: center;
+        position: relative;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        margin-bottom: 0 !important;
     }
 
     .services-visual {
-        min-height: 560px;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        min-height: 100vh;
     }
 
     .services-detail {
         position: absolute;
-        inset: auto 0 0 0;
-        padding: 2.8rem 2.85rem 3.4rem;
-        background: linear-gradient(182deg, rgba(15, 23, 42, 0.02) 0%, rgba(15, 23, 42, 0.55) 46%, rgba(15, 23, 42, 0.82) 100%);
-        border-top: 1px solid rgba(148, 163, 184, 0.18);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        left: 3rem;
+        bottom: 3rem;
+        right: auto;
+        max-width: 550px;
+        padding: 2.5rem 2.75rem 2.8rem;
+        background: linear-gradient(182deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.7) 46%, rgba(15, 23, 42, 0.9) 100%);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 1.5rem;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.4);
+        z-index: 5;
+    }
+
+    .services-stack {
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+        z-index: 10;
+        width: auto;
     }
 
     .services-preview {
-        justify-content: flex-start;
+        justify-content: flex-end;
     }
 
     .services-preview-card {
-        width: 320px;
-        min-height: 260px;
+        width: 340px;
+        min-height: 280px;
     }
 
     .services-preview-arrow-icon {
         width: 30px;
         height: 30px;
+    }
+
+    .services-stack-track {
+        display: none;
+    }
+}
+
+/* Responsive adjustments for medium screens */
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .services-detail {
+        left: 2rem;
+        bottom: 2rem;
+        max-width: 420px;
+        padding: 2rem 2.25rem 2.3rem;
+    }
+
+    .services-stack {
+        bottom: 2rem;
+        right: 2rem;
+    }
+
+    .services-preview-card {
+        width: 280px;
+        min-height: 240px;
+    }
+
+    #services > .container > .text-center {
+        top: 2rem;
+        padding: 1.5rem 2.5rem;
+    }
+
+    .services-detail-title {
+        font-size: 1.5rem;
+    }
+
+    .services-detail-description {
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 1536px) {
+    .services-detail {
+        left: 4rem;
+        bottom: 4rem;
+        max-width: 600px;
+        padding: 3rem 3.25rem 3.3rem;
+    }
+
+    .services-stack {
+        bottom: 4rem;
+        right: 4rem;
+    }
+
+    .services-preview-card {
+        width: 360px;
+        min-height: 300px;
+    }
+
+    #services > .container > .text-center {
+        top: 4rem;
+    }
+}
+
+/* Services Section Full Screen Adjustments */
+@media (min-width: 1024px) {
+    #services {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        height: 100vh;
+        background: #111827;
+    }
+
+    #services > .container {
+        max-width: 100%;
+        padding: 0;
+        height: 100%;
+        position: relative;
+    }
+
+    #services > .container > .text-center {
+        position: absolute;
+        top: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        background: rgba(249, 250, 251, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 2rem 3rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.15);
+        max-width: 90%;
     }
 }
 

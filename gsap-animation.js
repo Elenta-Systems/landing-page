@@ -983,7 +983,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const trigger = ScrollTrigger.create({
                 trigger: servicesSection,
                 start: 'top top',
-                end: () => `+=${totalCards * 320}`,
+                end: () => `+=${totalCards * 400}`,
                 pin: true,
                 scrub: true,
                 anticipatePin: 1,
