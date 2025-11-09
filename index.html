@@ -557,10 +557,11 @@
     </section>
 
 
-     <!-- Portfolio Preview Section -->
-     <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+     <!-- Portfolio Preview Section - Full Screen Showcase -->
+     <section id="portfolio-showcase">
+        <!-- Section Header -->
+        <div class="portfolio-header">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
                     <span class="text-sm font-semibold" data-en="Our Portfolio" data-ar="أعمالنا">Our Portfolio</span>
                 </div>
@@ -569,119 +570,138 @@
                     data-ar="المشاريع الأخيرة وقصص النجاح">
                     Recent Projects & Success Stories
                 </h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8" 
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" 
                    data-en="Discover how we've helped businesses across various industries achieve their digital transformation goals with innovative solutions" 
                    data-ar="اكتشف كيف ساعدنا الشركات عبر مختلف الصناعات في تحقيق أهداف التحول الرقمي بحلول مبتكرة">
                     Discover how we've helped businesses across various industries achieve their digital transformation goals with innovative solutions
                 </p>
-                <a href="works.html" 
-                   class="inline-flex items-center bg-secondary hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg group">
-                    <span data-en="View All Projects" data-ar="عرض جميع المشاريع">View All Projects</span>
-                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Vortex Robotics Project -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                    <div class="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700">
-                        <img src="assets/images/vortex/section_1.png" 
-                             alt="Vortex Robotics" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-secondary/90 text-white text-sm rounded-full">Web Development</span>
+        </div>
+
+        <!-- Full Screen Projects Container -->
+        <div id="portfolio-pin-container" class="portfolio-pin-container">
+            <div class="portfolio-slides-wrapper">
+                
+                <!-- Vortex Robotics Project - Slide from Right -->
+                <div class="portfolio-slide" 
+                     data-direction="right" 
+                     data-bg="assets/images/vortex/section_1.png"
+                     data-color="#36B1E1">
+                    <div class="portfolio-slide-bg"></div>
+                    <div class="portfolio-slide-overlay"></div>
+                    <div class="portfolio-slide-content">
+                        <div class="portfolio-slide-badge">
+                            <span class="px-4 py-2 bg-secondary/90 text-white text-sm rounded-full font-semibold">
+                                Web Development
+                            </span>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-primary mb-2" data-en="Vortex Robotics" data-ar="فورتكس روبوتيكس">Vortex Robotics</h3>
-                        <p class="text-gray-600 mb-4 text-sm" 
+                        <h3 class="portfolio-slide-title" data-en="Vortex Robotics" data-ar="فورتكس روبوتيكس">
+                            Vortex Robotics
+                        </h3>
+                        <p class="portfolio-slide-description" 
                            data-en="Advanced robotics company website with cutting-edge design and seamless user experience for showcasing innovative robotic solutions." 
                            data-ar="موقع شركة الروبوتات المتقدمة بتصميم متطور وتجربة مستخدم سلسة لعرض الحلول الروبوتية المبتكرة.">
                             Advanced robotics company website with cutting-edge design and seamless user experience for showcasing innovative robotic solutions.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
-                            <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Node.js</span>
-                            <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded">Responsive</span>
+                        <div class="portfolio-slide-tags">
+                            <span class="portfolio-tag">React</span>
+                            <span class="portfolio-tag">Node.js</span>
+                            <span class="portfolio-tag">Responsive</span>
                         </div>
-                        <a href="works.html#vortex" 
-                           class="inline-flex items-center text-secondary hover:text-blue-600 font-medium transition-colors duration-200">
+                        <a href="works.html#vortex" class="portfolio-slide-link">
                             <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                             </svg>
                         </a>
                     </div>
                 </div>
                 
-                <!-- VeloOne Consulting Project -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                    <div class="relative h-48 bg-gradient-to-br from-blue-600 to-blue-800">
-                        <img src="assets/images/veloone/section_1.png" 
-                             alt="VeloOne Consulting" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-blue-500/90 text-white text-sm rounded-full">Consulting Platform</span>
+                <!-- VeloOne Consulting Project - Slide from Left -->
+                <div class="portfolio-slide" 
+                     data-direction="left" 
+                     data-bg="assets/images/veloone/section_1.png"
+                     data-color="#2563EB">
+                    <div class="portfolio-slide-bg"></div>
+                    <div class="portfolio-slide-overlay"></div>
+                    <div class="portfolio-slide-content">
+                        <div class="portfolio-slide-badge">
+                            <span class="px-4 py-2 bg-blue-500/90 text-white text-sm rounded-full font-semibold">
+                                Consulting Platform
+                            </span>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-primary mb-2" data-en="VeloOne Consulting" data-ar="فيلوون للاستشارات">VeloOne Consulting</h3>
-                        <p class="text-gray-600 mb-4 text-sm" 
+                        <h3 class="portfolio-slide-title" data-en="VeloOne Consulting" data-ar="فيلوون للاستشارات">
+                            VeloOne Consulting
+                        </h3>
+                        <p class="portfolio-slide-description" 
                            data-en="Professional consulting platform designed to connect businesses with expert consultants and streamline the consultation process." 
                            data-ar="منصة استشارية مهنية مصممة لربط الشركات بالخبراء الاستشاريين وتبسيط عملية الاستشارة.">
                             Professional consulting platform designed to connect businesses with expert consultants and streamline the consultation process.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Angular</span>
-                            <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">.NET Core</span>
-                            <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">SQL Server</span>
+                        <div class="portfolio-slide-tags">
+                            <span class="portfolio-tag">Angular</span>
+                            <span class="portfolio-tag">.NET Core</span>
+                            <span class="portfolio-tag">SQL Server</span>
                         </div>
-                        <a href="works.html#veloone" 
-                           class="inline-flex items-center text-secondary hover:text-blue-600 font-medium transition-colors duration-200">
+                        <a href="works.html#veloone" class="portfolio-slide-link">
                             <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                             </svg>
                         </a>
                     </div>
                 </div>
                 
-                <!-- HeartBeats Medical AI Project -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                    <div class="relative h-48 bg-gradient-to-br from-red-500 to-pink-600">
-                        <img src="assets/images/heartbeats/section_1.png" 
-                             alt="HeartBeats Medical AI" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-red-500/90 text-white text-sm rounded-full">AI & Healthcare</span>
+                <!-- HeartBeats Medical AI Project - Slide from Top -->
+                <div class="portfolio-slide" 
+                     data-direction="top" 
+                     data-bg="assets/images/heartbeats/section_1.png"
+                     data-color="#EF4444">
+                    <div class="portfolio-slide-bg"></div>
+                    <div class="portfolio-slide-overlay"></div>
+                    <div class="portfolio-slide-content">
+                        <div class="portfolio-slide-badge">
+                            <span class="px-4 py-2 bg-red-500/90 text-white text-sm rounded-full font-semibold">
+                                AI & Healthcare
+                            </span>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-primary mb-2" data-en="HeartBeats Medical AI" data-ar="هارت بيتس الطبي بالذكاء الاصطناعي">HeartBeats Medical AI</h3>
-                        <p class="text-gray-600 mb-4 text-sm" 
+                        <h3 class="portfolio-slide-title" data-en="HeartBeats Medical AI" data-ar="هارت بيتس الطبي بالذكاء الاصطناعي">
+                            HeartBeats Medical AI
+                        </h3>
+                        <p class="portfolio-slide-description" 
                            data-en="AI-powered medical platform for diabetic detection and patient management with comprehensive admin dashboard and doctor portal." 
                            data-ar="منصة طبية مدعومة بالذكاء الاصطناعي لاكتشاف السكري وإدارة المرضى مع لوحة تحكم شاملة للإدارة وبوابة للأطباء.">
                             AI-powered medical platform for diabetic detection and patient management with comprehensive admin dashboard and doctor portal.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">AI/ML</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Python</span>
-                            <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Healthcare</span>
+                        <div class="portfolio-slide-tags">
+                            <span class="portfolio-tag">AI/ML</span>
+                            <span class="portfolio-tag">Python</span>
+                            <span class="portfolio-tag">Healthcare</span>
                         </div>
-                        <a href="works.html#heartbeats" 
-                           class="inline-flex items-center text-secondary hover:text-blue-600 font-medium transition-colors duration-200">
+                        <a href="works.html#heartbeats" class="portfolio-slide-link">
                             <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                             </svg>
                         </a>
                     </div>
                 </div>
+
+            </div>
+        </div>
+
+        <!-- View All Projects Button Section -->
+        <div class="portfolio-cta-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <a href="works.html" 
+                   id="view-all-projects-btn"
+                   class="inline-flex items-center bg-secondary hover:bg-blue-500 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl group relative overflow-hidden">
+                    <span class="relative z-10" data-en="View All Projects" data-ar="عرض جميع المشاريع">View All Projects</span>
+                    <svg class="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform duration-300 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
             </div>
         </div>
     </section>

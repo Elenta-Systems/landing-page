@@ -1413,6 +1413,342 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ====================================
+    // PORTFOLIO SHOWCASE ANIMATIONS - FULL SCREEN PINNED
+    // ====================================
+    
+    const portfolioSection = document.querySelector('#portfolio-showcase');
+    
+    if (portfolioSection) {
+        const mm = gsap.matchMedia();
+        
+        // Desktop full-screen pinned animation
+        mm.add('(min-width: 1024px)', () => {
+            const pinContainer = document.querySelector('#portfolio-pin-container');
+            const slides = gsap.utils.toArray('.portfolio-slide');
+            const viewAllBtn = document.querySelector('#view-all-projects-btn');
+            
+            if (!pinContainer || !slides.length) return;
+            
+            // Set up background images for each slide
+            slides.forEach(slide => {
+                const bgElement = slide.querySelector('.portfolio-slide-bg');
+                const bgImage = slide.dataset.bg;
+                if (bgElement && bgImage) {
+                    bgElement.style.backgroundImage = `url('${bgImage}')`;
+                }
+            });
+            
+            // Create master timeline for all slides
+            const masterTimeline = gsap.timeline({
+                defaults: { ease: 'power2.inOut' }
+            });
+            
+            // Animate each slide
+            slides.forEach((slide, index) => {
+                const direction = slide.dataset.direction || 'right';
+                const bgElement = slide.querySelector('.portfolio-slide-bg');
+                const overlay = slide.querySelector('.portfolio-slide-overlay');
+                const badge = slide.querySelector('.portfolio-slide-badge');
+                const title = slide.querySelector('.portfolio-slide-title');
+                const description = slide.querySelector('.portfolio-slide-description');
+                const tags = slide.querySelector('.portfolio-slide-tags');
+                const link = slide.querySelector('.portfolio-slide-link');
+                
+                const slideStart = index * 3.8; // Increased time allocation per slide for longer viewing
+                
+                masterTimeline.addLabel(`slide-${index}`, slideStart);
+                
+                // Initial position based on direction
+                let fromVars = { opacity: 0 };
+                let exitVars = { opacity: 0 };
+                
+                switch(direction) {
+                    case 'right':
+                        fromVars.x = '100%';
+                        exitVars.x = '-100%';
+                        break;
+                    case 'left':
+                        fromVars.x = '-100%';
+                        exitVars.x = '100%';
+                        break;
+                    case 'top':
+                        fromVars.y = '-100%';
+                        exitVars.y = '100%';
+                        break;
+                }
+                
+                // Slide entrance
+                masterTimeline.fromTo(slide,
+                    fromVars,
+                    {
+                        x: 0,
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: 'power3.out'
+                    },
+                    slideStart
+                );
+                
+                // Background zoom in
+                if (bgElement) {
+                    masterTimeline.fromTo(bgElement,
+                        {
+                            scale: 1.3,
+                            rotate: direction === 'left' ? -3 : 3
+                        },
+                        {
+                            scale: 1,
+                            rotate: 0,
+                            duration: 1.2,
+                            ease: 'power2.out'
+                        },
+                        slideStart
+                    );
+                }
+                
+                // Overlay fade
+                if (overlay) {
+                    masterTimeline.fromTo(overlay,
+                        { opacity: 0 },
+                        { opacity: 1, duration: 0.6, ease: 'power2.out' },
+                        slideStart + 0.2
+                    );
+                }
+                
+                // Content elements stagger
+                const contentElements = [badge, title, description, tags, link].filter(Boolean);
+                if (contentElements.length) {
+                    masterTimeline.fromTo(contentElements,
+                        { y: 50, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.7,
+                            stagger: 0.12,
+                            ease: 'power3.out'
+                        },
+                        slideStart + 0.4
+                    );
+                }
+                
+                // Hold the slide for viewing - increased for longer viewing time
+                masterTimeline.to({}, { duration: 1.8 }, slideStart + 1.2);
+                
+                // Exit animation (except for last slide)
+                if (index < slides.length - 1) {
+                    masterTimeline.to(slide,
+                        {
+                            ...exitVars,
+                            duration: 0.8,
+                            ease: 'power3.in'
+                        },
+                        slideStart + 3.0 // Updated timing to account for longer hold duration
+                    );
+                }
+            });
+            
+            // Add extra time at the end
+            masterTimeline.to({}, { duration: 0.5 });
+            
+            // Create ScrollTrigger for pinning
+            const totalDuration = masterTimeline.duration();
+            
+            ScrollTrigger.create({
+                trigger: pinContainer,
+                start: 'top top',
+                end: () => `+=${slides.length * 200}%`, // Increased from 100% to 200% for longer viewing time
+                pin: true,
+                scrub: 1.5, // Increased from 1 to 1.5 for smoother, slower transitions
+                anticipatePin: 1,
+                animation: masterTimeline,
+                snap: {
+                    snapTo: 1 / (slides.length - 1),
+                    duration: 0.6,
+                    ease: 'power2.inOut',
+                    inertia: false
+                }
+            });
+            
+            return () => {
+                ScrollTrigger.getAll().forEach(trigger => {
+                    if (trigger.trigger === pinContainer) {
+                        trigger.kill();
+                    }
+                });
+            };
+        });
+        
+        // Mobile & Tablet - Simple scroll animations
+        mm.add('(max-width: 1023px)', () => {
+            const slides = gsap.utils.toArray('.portfolio-slide');
+            
+            slides.forEach(slide => {
+                const bgElement = slide.querySelector('.portfolio-slide-bg');
+                const bgImage = slide.dataset.bg;
+                if (bgElement && bgImage) {
+                    bgElement.style.backgroundImage = `url('${bgImage}')`;
+                }
+                
+                const direction = slide.dataset.direction || 'right';
+                const contentElements = slide.querySelectorAll(
+                    '.portfolio-slide-badge, .portfolio-slide-title, .portfolio-slide-description, .portfolio-slide-tags, .portfolio-slide-link'
+                );
+                
+                // Initial state
+                let fromVars = { opacity: 0, y: 50 };
+                
+                switch(direction) {
+                    case 'right':
+                        fromVars.x = 100;
+                        break;
+                    case 'left':
+                        fromVars.x = -100;
+                        break;
+                    case 'top':
+                        fromVars.y = -50;
+                        break;
+                }
+                
+                // Entrance animation
+                gsap.fromTo(slide,
+                    fromVars,
+                    {
+                        scrollTrigger: {
+                            trigger: slide,
+                            start: 'top 80%',
+                            end: 'top 30%',
+                            toggleActions: 'play none none reverse'
+                        },
+                        x: 0,
+                        y: 0,
+                        opacity: 1,
+                        duration: 1,
+                        ease: 'power3.out'
+                    }
+                );
+                
+                // Content stagger
+                if (contentElements.length) {
+                    gsap.fromTo(contentElements,
+                        { y: 40, opacity: 0 },
+                        {
+                            scrollTrigger: {
+                                trigger: slide,
+                                start: 'top 70%',
+                                toggleActions: 'play none none reverse'
+                            },
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.8,
+                            stagger: 0.15,
+                            ease: 'power3.out'
+                        }
+                    );
+                }
+            });
+        });
+        
+        // View All Projects Button Animation
+        const viewAllBtn = document.querySelector('#view-all-projects-btn');
+        
+        if (viewAllBtn) {
+            gsap.set(viewAllBtn, { y: 50, opacity: 0, scale: 0.9 });
+            
+            gsap.to(viewAllBtn, {
+                scrollTrigger: {
+                    trigger: viewAllBtn,
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                ease: 'back.out(1.4)'
+            });
+            
+            // Floating animation
+            gsap.to(viewAllBtn, {
+                y: -8,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: 'power1.inOut',
+                scrollTrigger: {
+                    trigger: viewAllBtn,
+                    start: 'top 90%'
+                }
+            });
+            
+            // Glow effect
+            const btnGradient = viewAllBtn.querySelector('div');
+            if (btnGradient) {
+                gsap.to(btnGradient, {
+                    opacity: 0.3,
+                    duration: 1.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            }
+            
+            // Ripple on click
+            viewAllBtn.addEventListener('click', (e) => {
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.pointerEvents = 'none';
+                
+                const rect = viewAllBtn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height) * 2;
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = size + 'px';
+                ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                viewAllBtn.appendChild(ripple);
+                
+                gsap.fromTo(ripple,
+                    { scale: 0, opacity: 1 },
+                    {
+                        scale: 1,
+                        opacity: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        onComplete: () => ripple.remove()
+                    }
+                );
+            });
+        }
+        
+        // Header animation
+        const portfolioHeader = portfolioSection.querySelector('.portfolio-header');
+        if (portfolioHeader) {
+            const headerElements = portfolioHeader.querySelectorAll('.inline-flex, h2, p');
+            
+            gsap.set(headerElements, { y: 30, opacity: 0 });
+            
+            gsap.to(headerElements, {
+                scrollTrigger: {
+                    trigger: portfolioHeader,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+        }
+    }
+
     ScrollTrigger.addEventListener('refresh', () => smoother && smoother.refresh && smoother.refresh());
     ScrollTrigger.refresh();
 });
