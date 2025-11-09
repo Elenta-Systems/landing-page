@@ -1041,41 +1041,104 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.querySelector('#mobile-menu');
     
     if (header) {
-        // Initial state - hide navbar
-        gsap.set(header, { y: -100, opacity: 0 });
-        
-        // Navbar entrance animation on page load
-        const navbarTimeline = gsap.timeline({ delay: 0.3 });
-        
-        navbarTimeline.to(header, {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-        
-        // Logo animation with rotation and scale
-        if (logo) {
-            gsap.set(logo, { scale: 0, rotate: -180, opacity: 0 });
-            navbarTimeline.to(logo, {
-                scale: 1,
-                rotate: 0,
-                opacity: 1,
-                duration: 0.9,
-                ease: 'elastic.out(1, 0.6)'
-            }, '-=0.5');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReducedMotion) {
+            // Navbar entrance animation on page load
+            const navbarTimeline = gsap.timeline({
+                defaults: {
+                    ease: 'power2.out'
+                }
+            });
+            
+            navbarTimeline.from(header, {
+                y: -40,
+                opacity: 0,
+                duration: 0.55
+            });
+            
+            // Logo animation
+            if (logo) {
+                navbarTimeline.from(logo, {
+                    y: 12,
+                    opacity: 0,
+                    scale: 0.92,
+                    duration: 0.45
+                }, '-=0.35');
+            }
+            
+            // Nav links staggered animation
+            if (navLinks && navLinks.length) {
+                navbarTimeline.from(navLinks, {
+                    y: 16,
+                    opacity: 0,
+                    duration: 0.45,
+                    stagger: 0.06
+                }, '-=0.25');
+            }
+            
+            // Language buttons animation
+            if (langButtons && langButtons.length) {
+                navbarTimeline.from(langButtons, {
+                    scale: 0.85,
+                    opacity: 0,
+                    duration: 0.4,
+                    stagger: 0.08,
+                    ease: 'back.out(1.6)'
+                }, '-=0.3');
+                
+                // Add smooth transition for language toggle
+                langButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        gsap.to(btn, {
+                            scale: 0.9,
+                            duration: 0.1,
+                            yoyo: true,
+                            repeat: 1,
+                            ease: 'power2.inOut'
+                        });
+                    });
+                });
+            }
+            
+            // Mobile menu button animation
+            if (mobileMenuBtn) {
+                navbarTimeline.from(mobileMenuBtn, {
+                    scale: 0.85,
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: 'back.out(1.6)'
+                }, '-=0.3');
+            }
+        } else {
+            gsap.set(header, { opacity: 1, y: 0 });
+            if (logo) {
+                gsap.set(logo, { opacity: 1, scale: 1, y: 0, rotate: 0 });
+            }
+            if (navLinks && navLinks.length) {
+                gsap.set(navLinks, { opacity: 1, y: 0 });
+            }
+            if (langButtons && langButtons.length) {
+                gsap.set(langButtons, { opacity: 1, scale: 1 });
+                langButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        gsap.to(btn, {
+                            scale: 0.95,
+                            duration: 0.1,
+                            yoyo: true,
+                            repeat: 1,
+                            ease: 'power2.inOut'
+                        });
+                    });
+                });
+            }
+            if (mobileMenuBtn) {
+                gsap.set(mobileMenuBtn, { opacity: 1, scale: 1 });
+            }
         }
         
-        // Nav links staggered animation
+        // Nav links interactive enhancements
         if (navLinks && navLinks.length) {
-            gsap.set(navLinks, { y: -20, opacity: 0 });
-            navbarTimeline.to(navLinks, {
-                y: 0,
-                opacity: 1,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: 'power2.out'
-            }, '-=0.6');
             
             // Magnetic hover effect for nav links
             navLinks.forEach(link => {
@@ -1162,41 +1225,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
-        // Language buttons animation
-        if (langButtons && langButtons.length) {
-            gsap.set(langButtons, { scale: 0, opacity: 0 });
-            navbarTimeline.to(langButtons, {
-                scale: 1,
-                opacity: 1,
-                duration: 0.5,
-                stagger: 0.1,
-                ease: 'back.out(1.7)'
-            }, '-=0.4');
-            
-            // Add smooth transition for language toggle
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    gsap.to(btn, {
-                        scale: 0.9,
-                        duration: 0.1,
-                        yoyo: true,
-                        repeat: 1,
-                        ease: 'power2.inOut'
-                    });
-                });
-            });
-        }
-        
         // Mobile menu button animation
         if (mobileMenuBtn) {
-            gsap.set(mobileMenuBtn, { scale: 0, opacity: 0 });
-            navbarTimeline.to(mobileMenuBtn, {
-                scale: 1,
-                opacity: 1,
-                duration: 0.5,
-                ease: 'back.out(1.7)'
-            }, '-=0.4');
-            
             // Mobile menu toggle animation
             let isMenuOpen = false;
             
@@ -1745,6 +1775,177 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.8,
                 stagger: 0.2,
                 ease: 'power3.out'
+            });
+        }
+    }
+
+    // ====================================
+    // INDUSTRIES SECTION ANIMATIONS
+    // ====================================
+    
+    const industriesSection = document.querySelector('#industries');
+    
+    if (industriesSection) {
+        const industriesHeading = industriesSection.querySelector('h2');
+        const industriesBadge = industriesSection.querySelector('.inline-flex');
+        const industriesDescription = industriesSection.querySelector('p');
+        const industryCards = gsap.utils.toArray('.industry-card');
+        
+        // Header animations
+        if (industriesBadge || industriesHeading || industriesDescription) {
+            const headerTimeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: industriesSection,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+            
+            if (industriesBadge) {
+                headerTimeline.from(industriesBadge, {
+                    y: 30,
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 0.6,
+                    ease: 'back.out(1.7)'
+                });
+            }
+            
+            if (industriesHeading) {
+                headerTimeline.from(industriesHeading, {
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                }, '-=0.3');
+                
+                // Add gradient underline animation
+                headerTimeline.to(industriesHeading, {
+                    backgroundImage: 'linear-gradient(135deg, rgba(54, 177, 225, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%)',
+                    backgroundPosition: '0 100%',
+                    backgroundSize: '100% 35%',
+                    backgroundRepeat: 'no-repeat',
+                    duration: 0.8,
+                    ease: 'power2.out'
+                }, '-=0.4');
+            }
+            
+            if (industriesDescription) {
+                headerTimeline.from(industriesDescription, {
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: 'power2.out'
+                }, '-=0.5');
+            }
+        }
+        
+        // Cards animations
+        if (industryCards.length) {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const pointerFine = window.matchMedia('(pointer: fine)').matches;
+            
+            industryCards.forEach(card => {
+                const iconWrapper = card.querySelector('.w-16.h-16');
+                const svgPaths = card.querySelectorAll('svg path');
+                const contentElements = Array.from(card.querySelectorAll('h3, p'));
+
+                if (prefersReducedMotion) {
+                    gsap.set(card, { opacity: 1, y: 0, scale: 1 });
+                    if (iconWrapper) {
+                        gsap.set(iconWrapper, { opacity: 1, y: 0, scale: 1, rotateX: 0 });
+                    }
+                    if (svgPaths.length) {
+                        gsap.set(svgPaths, { strokeDashoffset: 0 });
+                    }
+                    if (contentElements.length) {
+                        gsap.set(contentElements, { opacity: 1, y: 0 });
+                    }
+                    return;
+                }
+
+                if (svgPaths.length) {
+                    svgPaths.forEach(path => {
+                        const length = typeof path.getTotalLength === 'function' ? path.getTotalLength() : 0;
+                        if (length) {
+                            gsap.set(path, {
+                                strokeDasharray: length,
+                                strokeDashoffset: length
+                            });
+                        }
+                    });
+                }
+
+                const cardTimeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 83%',
+                        end: 'bottom 65%',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+
+                cardTimeline.from(card, {
+                    y: 40,
+                    opacity: 0,
+                    scale: 0.94,
+                    duration: 0.6,
+                    ease: 'power3.out'
+                });
+
+                if (iconWrapper) {
+                    cardTimeline.from(iconWrapper, {
+                        y: 14,
+                        opacity: 0,
+                        scale: 0.9,
+                        rotateX: -8,
+                        duration: 0.45,
+                        ease: 'power2.out'
+                    }, '-=0.4');
+                }
+
+                if (svgPaths.length) {
+                    cardTimeline.to(svgPaths, {
+                        strokeDashoffset: 0,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        stagger: 0.05
+                    }, '-=0.35');
+                }
+
+                if (contentElements.length) {
+                    cardTimeline.from(contentElements, {
+                        y: 12,
+                        opacity: 0,
+                        duration: 0.45,
+                        ease: 'power2.out',
+                        stagger: 0.08
+                    }, '-=0.3');
+                }
+
+                if (pointerFine) {
+                    const hoverTimeline = gsap.timeline({ paused: true });
+                    
+                    hoverTimeline.to(card, {
+                        y: -8,
+                        scale: 1.03,
+                        boxShadow: '0 22px 45px -18px rgba(54, 177, 225, 0.35)',
+                        duration: 0.35,
+                        ease: 'power2.out'
+                    }, 0);
+                    
+                    if (iconWrapper) {
+                        hoverTimeline.to(iconWrapper, {
+                            y: -4,
+                            scale: 1.05,
+                            duration: 0.35,
+                            ease: 'power2.out'
+                        }, 0);
+                    }
+                    
+                    card.addEventListener('mouseenter', () => hoverTimeline.play());
+                    card.addEventListener('mouseleave', () => hoverTimeline.reverse());
+                }
             });
         }
     }

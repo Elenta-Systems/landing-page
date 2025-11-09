@@ -100,16 +100,110 @@
 /* Enhanced Card Animations */
 .service-card, .feature-card, .testimonial-card, .industry-card {
     transition: all 0.3s ease;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .service-card:hover, .feature-card:hover, .testimonial-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) translateZ(0);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
+/* Industry Cards Specific Styles */
+.industry-card {
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
 .industry-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) translateZ(0);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Icon Container Animation Support */
+.industry-card .w-16.h-16 {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    position: relative;
+    z-index: 1;
+}
+
+/* SVG Path Animation Support */
+.industry-card svg path {
+    will-change: stroke-dashoffset;
+}
+
+/* Smooth gradient background for headings */
+.industry-card h3 {
+    transition: all 0.3s ease;
+    will-change: color, transform;
+}
+
+/* Industry Section Background Enhancement */
+#industries {
+    position: relative;
+    overflow: hidden;
+}
+
+#industries::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(54, 177, 225, 0.3), transparent);
+}
+
+#industries::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(54, 177, 225, 0.3), transparent);
+}
+
+/* Ripple effect container */
+.industry-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid container enhancement */
+#industries .grid {
+    perspective: 1200px;
+}
+
+/* Responsive adjustments for industry cards */
+@media (max-width: 768px) {
+    .industry-card {
+        padding: 1.5rem !important;
+    }
+    
+    .industry-card .w-16.h-16 {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    
+    .industry-card h3 {
+        font-size: 1.125rem;
+    }
+    
+    .industry-card p {
+        font-size: 0.9rem;
+    }
 }
 
 .services-showcase {
