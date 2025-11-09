@@ -39,6 +39,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const createScrollScalePulse = (targets, options = {}) => {
+        const elements = gsap.utils.toArray(targets);
+
+        if (!elements.length) {
+            return;
+        }
+
+        const {
+            minScale = 0.96,
+            maxScale = 1.04,
+            start = 'top 85%',
+            end = 'bottom 65%',
+            scrub = 0.5,
+            enterEase = 'power2.out',
+            exitEase = 'power2.inOut',
+            duration = 1
+        } = options;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (prefersReducedMotion) {
+            elements.forEach(element => {
+                gsap.set(element, { clearProps: 'transform' });
+            });
+            return;
+        }
+
+        elements.forEach(element => {
+            gsap.set(element, { transformOrigin: 'center center', willChange: 'transform' });
+
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: element,
+                    start,
+                    end,
+                    scrub,
+                    invalidateOnRefresh: true
+                }
+            });
+
+            timeline
+                .fromTo(
+                    element,
+                    { scale: minScale },
+                    { scale: maxScale, ease: enterEase, duration, force3D: true }
+                )
+                .to(element, {
+                    scale: minScale,
+                    ease: exitEase,
+                    duration,
+                    force3D: true
+                });
+        });
+    };
+
     const heroSection = document.querySelector('#home');
     const heroContent = document.querySelector('.hero-content');
     const heroTitle = document.querySelector('.hero-title');
@@ -1970,6 +2025,42 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // ====================================
+    // SCALE PULSE FOR CONTENT SECTIONS
+    // ====================================
+
+    createScrollScalePulse('.testimonial-card', {
+        minScale: 0.96,
+        maxScale: 1.04,
+        start: 'top 88%',
+        end: 'bottom 62%',
+        scrub: 0.55
+    });
+
+    createScrollScalePulse('#about .feature-card', {
+        minScale: 0.95,
+        maxScale: 1.05,
+        start: 'top 90%',
+        end: 'bottom 60%',
+        scrub: 0.6
+    });
+
+    createScrollScalePulse('.faq-item', {
+        minScale: 0.97,
+        maxScale: 1.03,
+        start: 'top 92%',
+        end: 'bottom 65%',
+        scrub: 0.5
+    });
+
+    createScrollScalePulse('#contact .rounded-2xl', {
+        minScale: 0.95,
+        maxScale: 1.05,
+        start: 'top 90%',
+        end: 'bottom 60%',
+        scrub: 0.6
+    });
 
     // ====================================
     // INDUSTRIES SECTION ANIMATIONS
