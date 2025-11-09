@@ -369,3 +369,372 @@ header.shadow-lg {
 #about-overview .about-media-icon {
     will-change: transform, opacity;
 }
+
+#about-overview {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+#about-overview > .container {
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    #about-overview {
+        min-height: auto;
+        display: block;
+    }
+}
+
+/* Foundation Section */
+.foundation-section {
+    position: relative;
+    padding: clamp(5rem, 12vw, 7.5rem) 0 clamp(8rem, 18vw, 14rem);
+    background: linear-gradient(135deg, rgba(5, 18, 45, 0.98) 0%, rgba(5, 18, 45, 0.92) 55%, rgba(9, 28, 58, 0.95) 100%);
+    overflow: hidden;
+}
+
+.foundation-section::before,
+.foundation-section::after {
+    content: '';
+    position: absolute;
+    width: clamp(20rem, 40vw, 28rem);
+    height: clamp(20rem, 40vw, 28rem);
+    background: radial-gradient(circle at center, rgba(54, 177, 225, 0.32), rgba(5, 18, 45, 0));
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.8;
+}
+
+.foundation-section::before {
+    top: -18%;
+    left: -12%;
+}
+
+.foundation-section::after {
+    bottom: -22%;
+    right: -14%;
+}
+
+.foundation-intro {
+    max-width: 760px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.foundation-badge {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.foundation-intro-title {
+    font-size: clamp(2.25rem, 3.6vw, 3.2rem);
+    line-height: 1.15;
+    font-weight: 700;
+    color: #ffffff;
+    text-wrap: balance;
+}
+
+.foundation-intro-copy {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.foundation-scroll {
+    position: relative;
+    margin-top: clamp(3rem, 8vw, 5rem);
+    z-index: 2;
+}
+
+.foundation-pin {
+    max-width: min(1120px, 92vw);
+    margin: 0 auto;
+    position: relative;
+}
+
+.foundation-stage {
+    position: relative;
+    display: grid;
+    align-items: center;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(160deg, rgba(10, 24, 52, 0.65), rgba(5, 18, 45, 0.92));
+    overflow: hidden;
+    min-height: clamp(26rem, 58vw, 34rem);
+    box-shadow: 0 50px 120px -60px rgba(5, 12, 28, 0.8);
+    backdrop-filter: blur(24px) saturate(140%);
+}
+
+.foundation-slide {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(2rem, 5vw, 3.5rem);
+    padding: clamp(2rem, 6vw, 3.5rem);
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.foundation-slide.is-active {
+    pointer-events: auto;
+}
+
+.foundation-slide-media {
+    grid-column: span 6;
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 40px 90px -60px rgba(54, 177, 225, 0.55);
+}
+
+.foundation-slide-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(5, 18, 45, 0) 20%, rgba(5, 18, 45, 0.6) 100%);
+    opacity: 0.75;
+    transition: opacity 0.6s ease;
+}
+
+.foundation-slide.is-active .foundation-slide-media::after {
+    opacity: 0.45;
+}
+
+.foundation-slide-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: saturate(0.85) brightness(0.9);
+    transform-origin: center;
+}
+
+.foundation-slide-content {
+    grid-column: 7 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.foundation-slide-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.foundation-slide-label::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.foundation-slide-title {
+    font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+    line-height: 1.2;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.foundation-slide-description {
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 460px;
+}
+
+.foundation-slide-index {
+    position: absolute;
+    top: clamp(1.75rem, 5vw, 3rem);
+    left: clamp(2rem, 6vw, 3.5rem);
+    font-size: clamp(2.75rem, 5.5vw, 4rem);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.12);
+    letter-spacing: 0.12em;
+}
+
+.foundation-progress {
+    position: absolute;
+    right: clamp(1rem, 7vw, 4rem);
+    top: clamp(-1rem, 4vw, 1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    z-index: 30;
+}
+
+.foundation-progress-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    transition: all 0.35s ease;
+}
+
+.foundation-progress-number {
+    width: 42px;
+    height: 42px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.foundation-progress-dot.is-active {
+    color: rgba(255, 255, 255, 0.94);
+    transform: translateX(-8px);
+}
+
+.foundation-progress-dot.is-active .foundation-progress-number {
+    border-color: rgba(54, 177, 225, 0.8);
+    background: rgba(54, 177, 225, 0.2);
+    box-shadow: 0 18px 40px -25px rgba(54, 177, 225, 0.8);
+}
+
+@media (max-width: 1200px) {
+    .foundation-progress {
+        right: clamp(0.5rem, 6vw, 2.5rem);
+    }
+}
+
+@media (max-width: 1024px) {
+    .foundation-slide {
+        position: relative;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .foundation-slide-media {
+        grid-column: 1 / span 6;
+    }
+
+    .foundation-slide-content {
+        grid-column: 1 / span 6;
+    }
+
+    .foundation-progress {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 1.75rem;
+        gap: 1.25rem;
+    }
+
+    .foundation-progress-dot {
+        transform: none;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+    }
+
+    .foundation-progress-dot.is-active {
+        transform: none;
+    }
+
+    .foundation-stage {
+        border-radius: 1.5rem;
+    }
+
+    .foundation-slide-index {
+        left: clamp(1.5rem, 6vw, 2.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .foundation-section {
+        padding: clamp(4rem, 16vw, 6rem) 0;
+    }
+
+    .foundation-slide {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        padding: clamp(1.75rem, 7vw, 2.5rem);
+    }
+
+    .foundation-slide-content {
+        gap: 1rem;
+    }
+
+    .foundation-slide-description {
+        font-size: 1rem;
+    }
+
+    .foundation-progress-number {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .foundation-slide {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1.75rem;
+    }
+
+    .foundation-slide-media,
+    .foundation-slide-content {
+        grid-column: 1 / -1;
+    }
+
+    .foundation-slide-content {
+        text-align: left;
+    }
+
+    .foundation-slide-label {
+        justify-content: flex-start;
+    }
+
+    .foundation-slide-index {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+        left: clamp(1rem, 6vw, 2rem);
+        top: clamp(1rem, 6vw, 2rem);
+    }
+
+    .foundation-progress {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+    }
+}
+
+[dir="rtl"] .foundation-progress {
+    align-items: flex-start;
+}
+
+[dir="rtl"] .foundation-progress-dot {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .foundation-progress-dot.is-active {
+    transform: translateX(8px);
+}
+
+[dir="rtl"] .foundation-slide-label::before {
+    display: none;
+}
