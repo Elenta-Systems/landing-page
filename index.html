@@ -710,7 +710,7 @@
     <section id="industries" class="py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-black mb-6">
                     <span class="text-sm font-semibold" data-en="Industries" data-ar="الصناعات">Industries</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4" 
@@ -819,70 +819,73 @@
     </section>
 
     <!-- Development Process Section -->
-    <section class="py-20 bg-gray-50">
+    <section id="process" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <div class="inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
+                <div class="process-badge inline-flex items-center px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
                     <span class="text-sm font-semibold" data-en="Our Process" data-ar="عمليتنا">Our Process</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4" 
+                <h2 class="process-heading text-3xl sm:text-4xl font-bold text-primary mb-4" 
                     data-en="How We Bring Your Vision to Life" 
                     data-ar="كيف نحقق رؤيتك إلى واقع">
                     How We Bring Your Vision to Life
                 </h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto" 
+                <p class="process-copy text-lg text-gray-600 max-w-3xl mx-auto" 
                    data-en="Our proven methodology ensures successful project delivery from concept to deployment and beyond" 
                    data-ar="منهجيتنا المثبتة تضمن التسليم الناجح للمشروع من المفهوم إلى النشر وما بعده">
                     Our proven methodology ensures successful project delivery from concept to deployment and beyond
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Discovery -->
-                <div class="process-card text-center">
-                    <div class="relative mb-8">
-                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                            <span class="text-2xl font-bold text-white">1</span>
+            <div class="process-timeline-wrapper">
+                <svg class="process-path hidden lg:block" viewBox="0 0 1000 320" preserveAspectRatio="none">
+                    <path id="process-motion-path" d="M60 240 C280 80, 720 80, 940 240"></path>
+                </svg>
+                <div id="process-marker" class="process-marker hidden lg:flex"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                    <!-- Discovery -->
+                    <div class="process-card text-center">
+                        <div class="process-step-icon relative mb-8">
+                            <div class="process-step-badge w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <span class="text-2xl font-bold text-white">1</span>
+                            </div>
                         </div>
-                        <div class="absolute top-10 left-1/2 transform translate-x-1/2 w-full h-0.5 bg-secondary/20 hidden lg:block"></div>
+                        <h3 class="text-xl font-semibold text-primary mb-4" data-en="Discovery & Planning" data-ar="الاستكشاف والتخطيط">Discovery & Planning</h3>
+                        <p class="text-gray-600" data-en="Understanding your business needs and defining project scope" data-ar="فهم احتياجات عملك وتحديد نطاق المشروع">Understanding your business needs and defining project scope</p>
                     </div>
-                    <h3 class="text-xl font-semibold text-primary mb-4" data-en="Discovery & Planning" data-ar="الاستكشاف والتخطيط">Discovery & Planning</h3>
-                    <p class="text-gray-600" data-en="Understanding your business needs and defining project scope" data-ar="فهم احتياجات عملك وتحديد نطاق المشروع">Understanding your business needs and defining project scope</p>
-                </div>
-                
-                <!-- Design -->
-                <div class="process-card text-center">
-                    <div class="relative mb-8">
-                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                            <span class="text-2xl font-bold text-white">2</span>
+                    
+                    <!-- Design -->
+                    <div class="process-card text-center">
+                        <div class="process-step-icon relative mb-8">
+                            <div class="process-step-badge w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <span class="text-2xl font-bold text-white">2</span>
+                            </div>
                         </div>
-                        <div class="absolute top-10 left-1/2 transform translate-x-1/2 w-full h-0.5 bg-secondary/20 hidden lg:block"></div>
+                        <h3 class="text-xl font-semibold text-primary mb-4" data-en="Design & Prototyping" data-ar="التصميم والنموذج الأولي">Design & Prototyping</h3>
+                        <p class="text-gray-600" data-en="Creating intuitive designs and interactive prototypes" data-ar="إنشاء تصاميم بديهية ونماذج أولية تفاعلية">Creating intuitive designs and interactive prototypes</p>
                     </div>
-                    <h3 class="text-xl font-semibold text-primary mb-4" data-en="Design & Prototyping" data-ar="التصميم والنموذج الأولي">Design & Prototyping</h3>
-                    <p class="text-gray-600" data-en="Creating intuitive designs and interactive prototypes" data-ar="إنشاء تصاميم بديهية ونماذج أولية تفاعلية">Creating intuitive designs and interactive prototypes</p>
-                </div>
-                
-                <!-- Development -->
-                <div class="process-card text-center">
-                    <div class="relative mb-8">
-                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                            <span class="text-2xl font-bold text-white">3</span>
+                    
+                    <!-- Development -->
+                    <div class="process-card text-center">
+                        <div class="process-step-icon relative mb-8">
+                            <div class="process-step-badge w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <span class="text-2xl font-bold text-white">3</span>
+                            </div>
                         </div>
-                        <div class="absolute top-10 left-1/2 transform translate-x-1/2 w-full h-0.5 bg-secondary/20 hidden lg:block"></div>
+                        <h3 class="text-xl font-semibold text-primary mb-4" data-en="Development & Testing" data-ar="التطوير والاختبار">Development & Testing</h3>
+                        <p class="text-gray-600" data-en="Building robust solutions with rigorous quality assurance" data-ar="بناء حلول قوية مع ضمان الجودة الصارم">Building robust solutions with rigorous quality assurance</p>
                     </div>
-                    <h3 class="text-xl font-semibold text-primary mb-4" data-en="Development & Testing" data-ar="التطوير والاختبار">Development & Testing</h3>
-                    <p class="text-gray-600" data-en="Building robust solutions with rigorous quality assurance" data-ar="بناء حلول قوية مع ضمان الجودة الصارم">Building robust solutions with rigorous quality assurance</p>
-                </div>
-                
-                <!-- Deployment -->
-                <div class="process-card text-center">
-                    <div class="relative mb-8">
-                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                            <span class="text-2xl font-bold text-white">4</span>
+                    
+                    <!-- Deployment -->
+                    <div class="process-card text-center">
+                        <div class="process-step-icon relative mb-8">
+                            <div class="process-step-badge w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <span class="text-2xl font-bold text-white">4</span>
+                            </div>
                         </div>
+                        <h3 class="text-xl font-semibold text-primary mb-4" data-en="Launch & Support" data-ar="الإطلاق والدعم">Launch & Support</h3>
+                        <p class="text-gray-600" data-en="Smooth deployment with ongoing maintenance and support" data-ar="نشر سلس مع الصيانة والدعم المستمر">Smooth deployment with ongoing maintenance and support</p>
                     </div>
-                    <h3 class="text-xl font-semibold text-primary mb-4" data-en="Launch & Support" data-ar="الإطلاق والدعم">Launch & Support</h3>
-                    <p class="text-gray-600" data-en="Smooth deployment with ongoing maintenance and support" data-ar="نشر سلس مع الصيانة والدعم المستمر">Smooth deployment with ongoing maintenance and support</p>
                 </div>
             </div>
         </div>
@@ -1557,6 +1560,7 @@
     <!-- GSAP Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script>
     <script src="gsap-animation.js"></script>

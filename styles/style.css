@@ -161,16 +161,6 @@
     background: linear-gradient(90deg, transparent, rgba(54, 177, 225, 0.3), transparent);
 }
 
-#industries::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(54, 177, 225, 0.3), transparent);
-}
-
 /* Ripple effect container */
 .industry-card::before {
     content: '';
@@ -448,23 +438,114 @@
     opacity: 1;
 }
 
-/* Process Step Connector */
-.process-card:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -50%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, #36B1E1, transparent);
-    transform: translateY(-50%);
-    z-index: -1;
+/* Process Timeline Enhancements */
+.process-timeline-wrapper {
+    position: relative;
 }
 
-@media (max-width: 1024px) {
-    .process-card::after {
-        display: none;
+@media (min-width: 1024px) {
+    .process-timeline-wrapper {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        min-height: 320px;
     }
+}
+
+.process-path {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 260px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.process-path path {
+    stroke: rgba(54, 177, 225, 0.28);
+    stroke-width: 4;
+    fill: none;
+    stroke-linecap: round;
+    stroke-dasharray: 16 18;
+}
+
+.process-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #36B1E1 0%, rgba(5, 18, 45, 0.95) 100%);
+    box-shadow: 0 0 0 6px rgba(54, 177, 225, 0.12), 0 22px 46px -24px rgba(5, 18, 45, 0.55);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.process-marker::after {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: inherit;
+    border: 1px solid rgba(54, 177, 225, 0.4);
+    opacity: 0.85;
+    transform-origin: 50% 50%;
+    animation: process-marker-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes process-marker-pulse {
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+.process-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    box-shadow: 0 20px 45px -30px rgba(5, 18, 45, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.45s ease;
+}
+
+@media (max-width: 1023px) {
+    .process-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+.process-card.is-active {
+    background: linear-gradient(135deg, rgba(54, 177, 225, 0.12) 0%, rgba(5, 18, 45, 0.08) 100%);
+    box-shadow: 0 30px 60px -28px rgba(5, 18, 45, 0.55);
+    transform: translateY(-12px);
+}
+
+.process-step-badge {
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease, color 0.4s ease;
+}
+
+.process-card.is-active .process-step-badge {
+    background: linear-gradient(135deg, #36B1E1 0%, #05122D 100%);
+    box-shadow: 0 18px 45px -20px rgba(5, 18, 45, 0.65);
+    transform: scale(1.05);
+}
+
+.process-card.is-active h3 {
+    color: #05122D;
+}
+
+.process-card.is-active p {
+    color: rgba(5, 18, 45, 0.78);
 }
 
 @media (max-width: 1023px) {

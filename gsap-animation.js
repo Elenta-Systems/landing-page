@@ -7,11 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
     const hasTextPlugin = typeof TextPlugin !== 'undefined';
+    const hasMotionPathPlugin = typeof MotionPathPlugin !== 'undefined';
 
     if (hasTextPlugin) {
         gsap.registerPlugin(TextPlugin);
     } else {
         console.warn('GSAP TextPlugin did not load. Text animations will use basic fallbacks.');
+    }
+
+    if (hasMotionPathPlugin) {
+        gsap.registerPlugin(MotionPathPlugin);
+    } else {
+        console.warn('GSAP MotionPathPlugin did not load. Process timeline animation will use basic fallbacks.');
     }
 
     const smoother = ScrollSmoother.create({
@@ -620,6 +627,191 @@ document.addEventListener('DOMContentLoaded', () => {
 
             ScrollTrigger.create(triggerConfig);
         }
+    }
+
+    const processSection = document.querySelector('#process');
+
+    if (processSection) {
+        const processBadge = processSection.querySelector('.process-badge');
+        const processHeading = processSection.querySelector('.process-heading');
+        const processCopy = processSection.querySelector('.process-copy');
+        const processCards = gsap.utils.toArray(processSection.querySelectorAll('.process-card'));
+        const processStepBadges = gsap.utils.toArray(processSection.querySelectorAll('.process-step-badge'));
+        const processMarker = processSection.querySelector('#process-marker');
+        const processPath = processSection.querySelector('#process-motion-path');
+
+        const processRevealTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: processSection,
+                start: 'top 75%',
+                end: 'bottom 65%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        if (processBadge) {
+            processRevealTimeline.from(processBadge, {
+                y: 30,
+                autoAlpha: 0,
+                duration: 0.45,
+                ease: 'power2.out'
+            });
+        }
+
+        if (processHeading) {
+            processRevealTimeline.from(processHeading, {
+                y: 40,
+                autoAlpha: 0,
+                duration: 0.6,
+                ease: 'power3.out'
+            }, processBadge ? '-=0.2' : 0);
+        }
+
+        if (processCopy) {
+            processRevealTimeline.from(processCopy, {
+                y: 24,
+                autoAlpha: 0,
+                duration: 0.5,
+                ease: 'power2.out'
+            }, '-=0.2');
+        }
+
+        if (processCards.length) {
+            processRevealTimeline.from(processCards, {
+                y: 40,
+                autoAlpha: 0,
+                duration: 0.7,
+                ease: 'power3.out',
+                stagger: 0.15
+            }, '-=0.1');
+        }
+
+        if (processStepBadges.length) {
+            processRevealTimeline.from(processStepBadges, {
+                scale: 0.6,
+                autoAlpha: 0,
+                duration: 0.45,
+                ease: 'back.out(1.8)',
+                stagger: 0.08
+            }, '-=0.45');
+        }
+
+        let activeProcessCardIndex = -1;
+
+        const highlightProcessCard = index => {
+            if (!processCards.length) {
+                return;
+            }
+
+            const boundedIndex = Math.max(0, Math.min(processCards.length - 1, index));
+
+            if (boundedIndex === activeProcessCardIndex) {
+                return;
+            }
+
+            processCards.forEach((card, cardIndex) => {
+                card.classList.toggle('is-active', cardIndex === boundedIndex);
+            });
+
+            activeProcessCardIndex = boundedIndex;
+        };
+
+        if (processCards.length) {
+            highlightProcessCard(0);
+        }
+
+        const processMedia = gsap.matchMedia();
+
+        processMedia.add('(max-width: 1023px)', () => {
+            if (!processCards.length) {
+                return () => {};
+            }
+
+            const triggers = processCards.map((card, index) =>
+                ScrollTrigger.create({
+                    trigger: card,
+                    start: 'top 80%',
+                    end: 'bottom 65%',
+                    onEnter: () => highlightProcessCard(index),
+                    onEnterBack: () => highlightProcessCard(index)
+                })
+            );
+
+            return () => {
+                triggers.forEach(trigger => trigger.kill());
+                highlightProcessCard(0);
+            };
+        });
+
+        processMedia.add('(min-width: 1024px)', () => {
+            if (!processCards.length) {
+                return () => {};
+            }
+
+            if (!hasMotionPathPlugin || !processMarker || !processPath) {
+                const triggers = processCards.map((card, index) =>
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: 'top 80%',
+                        end: 'bottom 60%',
+                        onEnter: () => highlightProcessCard(index),
+                        onEnterBack: () => highlightProcessCard(index)
+                    })
+                );
+
+                return () => {
+                    triggers.forEach(trigger => trigger.kill());
+                    highlightProcessCard(0);
+                };
+            }
+
+            gsap.set(processMarker, { autoAlpha: 0, scale: 0.6 });
+
+            const markerRevealTrigger = ScrollTrigger.create({
+                trigger: processSection,
+                start: 'top 70%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(processMarker, {
+                        autoAlpha: 1,
+                        scale: 1,
+                        duration: 0.45,
+                        ease: 'back.out(1.7)'
+                    });
+                }
+            });
+
+            const markerTween = gsap.to(processMarker, {
+                motionPath: {
+                    path: processPath,
+                    align: processPath,
+                    autoRotate: false,
+                    alignOrigin: [0.5, 0.5]
+                },
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: processSection,
+                    start: 'top 60%',
+                    end: 'bottom top',
+                    scrub: 1,
+                    onUpdate: self => {
+                        const progress = self.progress;
+                        const index = Math.min(
+                            processCards.length - 1,
+                            Math.max(0, Math.round(progress * (processCards.length - 1)))
+                        );
+                        highlightProcessCard(index);
+                    },
+                    onLeaveBack: () => highlightProcessCard(0)
+                }
+            });
+
+            return () => {
+                markerRevealTrigger.kill();
+                markerTween.kill();
+                highlightProcessCard(0);
+            };
+        });
     }
 
     const servicesSection = document.querySelector('#services');
