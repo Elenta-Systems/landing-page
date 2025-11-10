@@ -348,11 +348,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const foundationSection = document.querySelector('#foundation');
 
     if (foundationSection) {
-        const scrollContainer = foundationSection.querySelector('.foundation-scroll');
+        const cardsStage = foundationSection.querySelector('.foundation-cards-stage');
         const introTitle = foundationSection.querySelector('.foundation-intro-title');
         const introCopy = foundationSection.querySelector('.foundation-intro-copy');
-        const progressDots = Array.from(foundationSection.querySelectorAll('.foundation-progress-dot'));
-        const slides = gsap.utils.toArray(foundationSection.querySelectorAll('.foundation-slide'));
+        const foundationCards = gsap.utils.toArray(foundationSection.querySelectorAll('.foundation-card'));
 
         if (introTitle) {
             if (hasTextPlugin) {
@@ -419,272 +418,236 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (scrollContainer && slides.length) {
-            const slideData = slides.map((slide, index) => {
-                const image = slide.querySelector('.foundation-slide-media img');
+        if (foundationCards.length) {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const currentLang = document.documentElement.getAttribute('lang') || 'en';
 
-                if (image) {
-                    gsap.set(image, {
-                        scale: 1.12,
-                        rotate: -2,
-                        filter: 'saturate(0.8) brightness(0.9)'
-                    });
-                }
+            const syncCardCopy = (card, lang) => {
+                const badge = card.querySelector('.foundation-card-badge');
+                const title = card.querySelector('.foundation-card-title');
+                const description = card.querySelector('.foundation-card-description');
 
-                gsap.set(slide, {
-                    autoAlpha: index === 0 ? 1 : 0,
-                    yPercent: index === 0 ? 0 : 34,
-                    zIndex: slides.length - index
-                });
-
-                return {
-                    slide,
-                    image,
-                    label: slide.querySelector('.foundation-slide-label'),
-                    title: slide.querySelector('.foundation-slide-title'),
-                    description: slide.querySelector('.foundation-slide-description'),
-                    indexBadge: slide.querySelector('.foundation-slide-index')
-                };
-            });
-
-            let activeSlideIndex = 0;
-
-            const activateSlide = (index, immediate = false) => {
-                const lang = document.documentElement.getAttribute('lang') || 'en';
-                const data = slideData[index];
-
-                if (!data) {
-                    return;
-                }
-
-                slideData.forEach((item, idx) => {
-                    item.slide.classList.toggle('is-active', idx === index);
-                });
-
-                progressDots.forEach((dot, dotIndex) => {
-                    dot.classList.toggle('is-active', dotIndex === index);
-                });
-
-                if (data.label) {
-                    const labelText = data.label.getAttribute(`data-${lang}`);
-                    if (labelText) {
-                        data.label.textContent = labelText;
-                    }
-                }
-
-                if (immediate) {
-                    gsap.set(data.slide, { autoAlpha: 1, yPercent: 0 });
-
-                    if (data.indexBadge) {
-                        gsap.set(data.indexBadge, { autoAlpha: 1, y: 0 });
-                    }
-
-                    if (data.label) {
-                        gsap.set(data.label, { autoAlpha: 0.8, y: 0 });
-                    }
-
-                    if (data.title) {
-                        if (hasTextPlugin) {
-                            gsap.killTweensOf(data.title);
-                            const titleText = data.title.getAttribute(`data-${lang}`) || data.title.textContent;
-                            data.title.textContent = titleText;
-                        } else {
-                            gsap.set(data.title, { autoAlpha: 1, y: 0 });
-                        }
-                    }
-
-                    if (data.description) {
-                        if (hasTextPlugin) {
-                            gsap.killTweensOf(data.description);
-                            const descText = data.description.getAttribute(`data-${lang}`) || data.description.textContent;
-                            data.description.textContent = descText;
-                        } else {
-                            gsap.set(data.description, { autoAlpha: 0.85, y: 0 });
-                        }
-                    }
-
-                    return;
-                }
-
-                if (data.indexBadge) {
-                    gsap.killTweensOf(data.indexBadge);
-                    gsap.fromTo(data.indexBadge, {
-                        y: 28,
-                        autoAlpha: 0
-                    }, {
-                        y: 0,
-                        autoAlpha: 1,
-                        duration: 0.55,
-                        ease: 'power2.out'
-                    });
-                }
-
-                if (data.label) {
-                    gsap.killTweensOf(data.label);
-                    gsap.fromTo(data.label, {
-                        y: 22,
-                        autoAlpha: 0
-                    }, {
-                        y: 0,
-                        autoAlpha: 0.75,
-                        duration: 0.45,
-                        ease: 'power2.out'
-                    });
-                }
-
-                if (data.title) {
-                    const titleText = data.title.getAttribute(`data-${lang}`) || data.title.textContent;
-                    gsap.killTweensOf(data.title);
-
-                    if (hasTextPlugin) {
-                        data.title.textContent = '';
-                        gsap.to(data.title, {
-                            text: titleText,
-                            duration: 0.95,
-                            ease: 'power2.out'
-                        });
-                    } else {
-                        gsap.fromTo(data.title, {
-                            y: 24,
-                            autoAlpha: 0
-                        }, {
-                            y: 0,
-                            autoAlpha: 1,
-                            duration: 0.55,
-                            ease: 'power2.out'
-                        });
-                    }
-                }
-
-                if (data.description) {
-                    const descText = data.description.getAttribute(`data-${lang}`) || data.description.textContent;
-                    gsap.killTweensOf(data.description);
-
-                    if (hasTextPlugin) {
-                        data.description.textContent = '';
-                        gsap.to(data.description, {
-                            text: descText,
-                            duration: 1.1,
-                            ease: 'power2.out',
-                            delay: 0.05
-                        });
-                    } else {
-                        gsap.fromTo(data.description, {
-                            y: 18,
-                            autoAlpha: 0
-                        }, {
-                            y: 0,
-                            autoAlpha: 0.85,
-                            duration: 0.55,
-                            ease: 'power2.out',
-                            delay: 0.05
-                        });
-                    }
-                }
-            };
-
-            activateSlide(0, true);
-
-            const segmentDuration = 2.4;
-            const perSlideScrollAmount = 320;
-            const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-            slideData.forEach((data, index) => {
-                const slideStart = index * segmentDuration;
-
-                timeline.addLabel(`foundation-slide-${index}`, slideStart);
-
-                const introDuration = segmentDuration * 0.35;
-                const focusDuration = segmentDuration * 0.3;
-                const exitDuration = segmentDuration * 0.35;
-
-                timeline.fromTo(data.slide, {
-                    autoAlpha: index === 0 ? 1 : 0,
-                    yPercent: index === 0 ? 0 : 34
-                }, {
-                    autoAlpha: 1,
-                    yPercent: 0,
-                    duration: introDuration,
-                    ease: 'power2.out'
-                }, slideStart);
-
-                timeline.to(data.slide, {
-                    yPercent: 0,
-                    duration: focusDuration,
-                    ease: 'none'
-                }, slideStart + introDuration);
-
-                if (data.image) {
-                    timeline.fromTo(data.image, {
-                        scale: 1.12,
-                        rotate: -2,
-                        filter: 'saturate(0.8) brightness(0.88)'
-                    }, {
-                        scale: 1,
-                        rotate: 0,
-                        filter: 'saturate(1) brightness(1)',
-                        duration: introDuration + focusDuration,
-                        ease: 'power2.out'
-                    }, slideStart);
-                }
-
-                if (index !== slideData.length - 1) {
-                    timeline.to(data.slide, {
-                        autoAlpha: 0,
-                        yPercent: -34,
-                        duration: exitDuration,
-                        ease: 'power2.in'
-                    }, slideStart + introDuration + focusDuration);
-                }
-            });
-
-            timeline.to({}, { duration: segmentDuration * 0.4 });
-
-            const totalDuration = timeline.duration();
-            let snapPoints = null;
-
-            if (slideData.length > 1 && totalDuration > 0) {
-                snapPoints = slideData.map((_, index) => {
-                    const labelTime = timeline.labels[`foundation-slide-${index}`] ?? 0;
-                    return labelTime / totalDuration;
-                });
-
-                snapPoints.push(1);
-            }
-
-            const triggerConfig = {
-                trigger: scrollContainer,
-                start: 'top top',
-                end: () => `+=${slideData.length * perSlideScrollAmount}vh`,
-                pin: true,
-                scrub: true,
-                anticipatePin: 1,
-                animation: timeline,
-                onUpdate: self => {
-                    if (!slideData.length) {
+                [badge, title, description].forEach(element => {
+                    if (!element) {
                         return;
                     }
 
-                    const rawIndex = Math.round(self.progress * (slideData.length - 1));
-                    const boundedIndex = Math.max(0, Math.min(slideData.length - 1, rawIndex));
+                    const textValue = element.getAttribute(`data-${lang}`);
 
-                    if (boundedIndex !== activeSlideIndex) {
-                        activeSlideIndex = boundedIndex;
-                        activateSlide(boundedIndex);
+                    if (textValue) {
+                        element.textContent = textValue;
                     }
-                }
+                });
             };
 
-            if (snapPoints && snapPoints.length) {
-                triggerConfig.snap = {
-                    snapTo: snapPoints,
-                    duration: 0.55,
-                    ease: 'power1.inOut',
-                    inertia: false
-                };
-            }
+            foundationCards.forEach(card => syncCardCopy(card, currentLang));
 
-            ScrollTrigger.create(triggerConfig);
+            const matchMedia = gsap.matchMedia();
+
+            matchMedia.add('(max-width: 767px)', () => {
+                if (prefersReducedMotion) {
+                    foundationCards.forEach(card => {
+                        gsap.set(card, { clearProps: 'opacity,transform' });
+                    });
+                    return () => {};
+                }
+
+                return gsap.from(foundationCards, {
+                    autoAlpha: 0,
+                    y: 36,
+                    duration: 0.6,
+                    stagger: 0.12,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: foundationSection,
+                        start: 'top 80%'
+                    }
+                });
+            });
+
+            matchMedia.add('(min-width: 768px)', () => {
+                if (!cardsStage) {
+                    return () => {};
+                }
+
+                const cards = foundationCards.map(card => card);
+                const middleIndex = Math.floor(cards.length / 2);
+                const basePositions = cards.map((_, index) => (index - middleIndex) * 120);
+                const images = cards.map(card => card.querySelector('.foundation-card-media img'));
+
+                images.forEach(image => {
+                    if (!image) {
+                        return;
+                    }
+
+                    gsap.set(image, {
+                        filter: 'saturate(0.78) brightness(0.92)'
+                    });
+                });
+
+                gsap.set(cards, index => ({
+                    xPercent: basePositions[index],
+                    yPercent: -55,
+                    scale: cards.length > 1 ? (index === middleIndex ? 1 : 0.92) : 1,
+                    transformOrigin: 'center center',
+                    autoAlpha: 1,
+                    zIndex: cards.length - index
+                }));
+
+                const revealTimeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: foundationSection,
+                        start: 'top 20%',
+                        once: true
+                    }
+                });
+
+                revealTimeline.from(cards, {
+                    autoAlpha: 0,
+                    y: 42,
+                    duration: 0.65,
+                    stagger: 0.12,
+                    ease: 'power2.out'
+                });
+
+                if (prefersReducedMotion || cards.length < 2) {
+                    return () => {};
+                }
+
+                const baseState = {
+                    positions: basePositions,
+                    scales: cards.map((_, index) => cards.length > 1 ? (index === middleIndex ? 1 : 0.92) : 1),
+                    alphas: cards.map(() => 0.88),
+                    z: cards.map((_, index) => cards.length - index),
+                    active: -1
+                };
+
+                const highlightStates = cards.length === 3 ? [
+                    baseState,
+                    {
+                        positions: [0, 120, 230],
+                        scales: [1.28, 0.82, 0.68],
+                        alphas: [1, 0.62, 0.35],
+                        z: [9, 5, 3],
+                        active: 0
+                    },
+                    {
+                        positions: [-210, 0, 120],
+                        scales: [0.65, 1.26, 0.82],
+                        alphas: [0.32, 1, 0.72],
+                        z: [3, 9, 5],
+                        active: 1
+                    },
+                    {
+                        positions: [-220, -130, 0],
+                        scales: [0.6, 0.74, 1.26],
+                        alphas: [0.28, 0.55, 1],
+                        z: [3, 5, 9],
+                        active: 2
+                    }
+                ] : [baseState];
+
+                if (!highlightStates.length || cards.length !== 3) {
+                    return () => {};
+                }
+
+                const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop || 0;
+                const getStageTop = () => cardsStage.getBoundingClientRect().top + getScrollTop();
+                const getSectionTop = () => foundationSection.getBoundingClientRect().top + getScrollTop();
+                const getViewportHeight = () => window.innerHeight || document.documentElement.clientHeight;
+
+                const totalTransitions = Math.max(1, highlightStates.length - 1);
+
+                const getStartPosition = () => {
+                    const stageTop = getStageTop();
+                    const sectionTop = getSectionTop();
+                    const offsetWithinSection = stageTop - sectionTop;
+                    const stageHeight = cardsStage.offsetHeight;
+                    const viewportHeight = getViewportHeight();
+                    const availableSpace = viewportHeight - stageHeight;
+                    const verticalOffset = availableSpace > 0 ? availableSpace / 2 : 0;
+
+                    return sectionTop + offsetWithinSection - verticalOffset;
+                };
+
+                const getEndPosition = () => {
+                    const stageHeight = cardsStage.offsetHeight;
+                    const viewportHeight = getViewportHeight();
+                    const extraDistance = Math.max(stageHeight * 0.6, viewportHeight * 0.45);
+
+                    return getStartPosition() + (totalTransitions * stageHeight) + extraDistance;
+                };
+
+                const highlightTimeline = gsap.timeline({
+                    defaults: {
+                        duration: 1.15,
+                        ease: 'power3.inOut'
+                    },
+                    scrollTrigger: {
+                        trigger: foundationSection,
+                        start: () => getStartPosition(),
+                        end: () => getEndPosition(),
+                        scrub: 0.75,
+                        pin: cardsStage,
+                        pinSpacing: true,
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true
+                    }
+                });
+
+                const applyState = state => {
+                    cards.forEach((card, index) => {
+                        const zIndex = state.z[index] ?? cards.length - index;
+                        card.style.zIndex = String(zIndex);
+                        card.classList.toggle('is-active', state.active === index);
+                    });
+
+                    images.forEach((image, index) => {
+                        if (!image) {
+                            return;
+                        }
+
+                        const isActiveImage = state.active === index;
+
+                        gsap.to(image, {
+                            filter: isActiveImage ? 'saturate(1) brightness(1)' : 'saturate(0.78) brightness(0.92)',
+                            duration: 0.9,
+                            ease: 'power2.out'
+                        });
+                    });
+                };
+
+                applyState(highlightStates[0]);
+
+                highlightStates.slice(1).forEach((state, idx) => {
+                    const position = idx + 1;
+
+                    highlightTimeline.add(() => applyState(state), position);
+
+                    cards.forEach((card, cardIndex) => {
+                        highlightTimeline.to(card, {
+                            xPercent: state.positions[cardIndex],
+                            scale: state.scales[cardIndex],
+                            autoAlpha: state.alphas[cardIndex]
+                        }, position);
+                    });
+                });
+
+                highlightTimeline.to({}, { duration: 0.4 });
+
+                highlightTimeline.scrollTrigger?.refresh();
+
+                return () => {
+                    if (highlightTimeline.scrollTrigger) {
+                        highlightTimeline.scrollTrigger.kill();
+                    }
+                    highlightTimeline.kill();
+                    cards.forEach(card => {
+                        card.style.removeProperty('z-index');
+                        card.classList.remove('is-active');
+                    });
+                };
+            });
         }
     }
 
